@@ -7,9 +7,9 @@ export default function Home() {
     <>
       <Header />
       <main className="w-10/12 m-auto">
-      <FirstHomeComp />
-      <CarouselHome />
-      <CurrentCity />
+        <FirstHomeComp />
+        <CarouselHome />
+        <CurrentCity />
       </main>
     </>
   );

@@ -1,21 +1,18 @@
 import Card from "./Card";
 import { Link } from "react-router-dom";
 import bgImg from "../../assets/carouselImg.jpg";
+import Button from "./Button";
 export default function FirstHomeComp() {
   const cardStyle = "max-w-60 rounded-2xl";
 
   return (
     <div className="flex align-center justify-center flex-col my-6">
-      <h2 className="text-2xl mx-auto my-3">Weahter can be unpredictable</h2>
+      <h2 className="text-5xl font-semibold mx-auto my-3">Weahter can be unpredictable</h2>
       <p className="text-xl mx-auto mb-3">Be one step ahead of it!</p>
       <Link to="/about" className="mx-auto">
-        <button className="bg-slate-500 w-52 rounded-md p-2 text-slate-200">
-          See more!
-        </button>
+        <Button className="bg-slate-400 w-36">Explore benefits</Button>
       </Link>
-      <p>Benefits</p>
-      {/* Here will be listed 3 cards */}
-      <div className="flex align-center justify-around">
+      <div className="flex align-center justify-around my-5">
         <Card className={cardStyle}>
           <img src={bgImg} className="w-80 rounded-md" alt="Weather Forecast" />
           <h3 className="text-xl font-semibold mt-2">
@@ -44,9 +41,9 @@ export default function FirstHomeComp() {
             current and forecasted weather conditions, ensuring you stay
             comfortable and stylish, no matter the weather.
           </p>
-          <button className="bg-amber-600 p-2 rounded">
+          <Button className="bg-amber-600 w-48">
             See weather forecast
-          </button>
+          </Button>
         </Card>
       </div>
     </div>

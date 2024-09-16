@@ -5,9 +5,11 @@ import {
   day,
   currentMonths,
 } from "../utils/currentDate";
+import Button from "./UI/Button";
+
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-around bg-slate-500 text-slate-200">
+    <nav className="flex items-center justify-around bg-slate-500 text-slate-200 p-4">
       <div>Weather Forecast</div>
       <ul className="flex items-center justify-center">
         <li className="p-1 m-1">
@@ -20,13 +22,17 @@ export default function Navbar() {
       <div>
         {formattedHours}:{minutes}
       </div>
-      <div>Dark mode</div>
+      <Button className="bg-slate-700">Dark mode</Button>
       <div>
         {day} {currentMonths}
       </div>
-      <ul className="flex">
-        <li>Sing in</li>
-        <li>Log in</li>
+      <ul>
+        <Link className="m-2">
+          <Button className="bg-slate-900">Sing in</Button>
+        </Link>
+        <Link>
+          <Button className="bg-slate-300">Sing in</Button>
+        </Link>
       </ul>
     </nav>
   );
