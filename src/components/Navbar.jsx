@@ -7,7 +7,7 @@ import {
 } from "../utils/currentDate";
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-around bg-slate-700 text-slate-200">
+    <nav className="flex items-center justify-around bg-slate-500 text-slate-200">
       <div>Weather Forecast</div>
       <ul className="flex items-center justify-center">
         <li className="p-1 m-1">
