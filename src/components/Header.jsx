@@ -1,11 +1,9 @@
-import bgImg from "../assets/bg-img.jpg";
-
 export default function Header() {
   const basicCardStyle =
     "flex flex-col bg-orange-300 p-2 text-orange-100 m-1 rounded-md shadow-2xl opacity-80";
 
   return (
-    <header className="h-[80vh] flex justify-around w-full bg-bgImg bg-no-repeat bg-top">
+    <header className="h-[80vh] flex justify-around w-full bg-bgImg bg-no-repeat bg-left">
       <div className="left ">
         <h1 className="text-3xl text-slate-300 underline my-20">
           See wheather in your city!
