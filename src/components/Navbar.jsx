@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
-import { formattedHours, minutes, day, currentMonths } from "../utils/currentDate";
+import {
+  formattedHours,
+  minutes,
+  day,
+  currentMonths,
+} from "../utils/currentDate";
 export default function Navbar() {
   return (
     <nav className="flex items-center justify-around bg-slate-700 text-slate-200">
