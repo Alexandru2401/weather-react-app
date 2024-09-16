@@ -1,15 +1,17 @@
 import CurrentCity from "../components/CurentCity";
 import Header from "../components/Header";
-import CarouselHome from "../components/UI/CarouselHome";
 import FirstHomeComp from "../components/UI/FirstHomeComp";
+import CarouselHome from "../components/UI/CarouselHome";
 export default function Home() {
   return (
-    <div>
+    <>
       <Header />
+      <main className="w-10/12 m-auto">
       <FirstHomeComp />
       <CarouselHome />
       <CurrentCity />
-    </div>
+      </main>
+    </>
   );
 }
 
