@@ -1,6 +1,6 @@
 export default function Header() {
   const basicCardStyle =
-    "flex flex-col bg-orange-300 p-2 text-orange-100 m-1 rounded-md";
+    "flex flex-col bg-orange-300 p-2 text-orange-100 m-1 rounded-md shadow-2xl opacity-80";
 
   return (
     <header className="bg-slate-500 h-[80vh] flex justify-around w-full">
@@ -9,7 +9,7 @@ export default function Header() {
           See wheather in your city!
         </h1>
         <div className="w-60 my-20">
-          <p className="text-slate-100">
+          <p className="text-slate-100 shadow-2xl p-2 rounded-md">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
             eius voluptatibus, recusandae suscipit quas harum omnis nam
             blanditiis voluptatum ab perspiciatis tempore exercitationem

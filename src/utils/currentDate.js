@@ -1,5 +1,5 @@
 const date = new Date();
-export const hours = date.getHours();
+const hours = date.getHours();
 export const minutes = date.getMinutes();
 export const day = date.getDay();
 
@@ -21,3 +21,11 @@ const month = [
 ];
 
 export let currentMonths = month[months];
+
+export let formattedHours = 0;
+
+if (hours < 10) {
+  formattedHours = `0${hours}`;
+} else {
+  formattedHours = hours;
+}

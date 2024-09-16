@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { hours, minutes, day, currentMonths } from "../utils/currentDate";
+import { formattedHours, minutes, day, currentMonths } from "../utils/currentDate";
 export default function Navbar() {
   return (
     <nav className="flex items-center justify-around bg-slate-700 text-slate-200">
@@ -13,7 +13,7 @@ export default function Navbar() {
         </li>
       </ul>
       <div>
-        {hours}:{minutes}
+        {formattedHours}:{minutes}
       </div>
       <div>Dark mode</div>
       <div>
