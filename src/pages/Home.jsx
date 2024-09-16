@@ -2,6 +2,7 @@ import CurrentCity from "../components/CurentCity";
 import Header from "../components/Header";
 import FirstHomeComp from "../components/UI/FirstHomeComp";
 import CarouselHome from "../components/UI/CarouselHome";
+import SelectCity from "../components/SelectCity";
 export default function Home() {
   return (
     <>
@@ -10,6 +11,7 @@ export default function Home() {
         <FirstHomeComp />
         <CarouselHome />
         <CurrentCity />
+        <SelectCity />
       </main>
     </>
   );

@@ -21,18 +21,21 @@ export default function CarouselHome() {
       <h2 className="text-center m-3">Title</h2>
       <div className="flex justify-around">
         <div className="w-2/4">
-          <img src={carouselImg} />
+          <img src={carouselImg} className="rounded-2xl" />
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center bg-slate-200 rounded-xl relative">
           <button onClick={handlePrev}>
             <ArrowBackIosIcon />
           </button>
 
-          <Card className="w-80">{item.content}</Card>
+          <Card className="w-80 relative">{item.content}</Card>
 
           <button onClick={handleNext}>
             <ArrowForwardIosIcon />
           </button>
+          <span className="dots1"></span>
+          <span className="dots2"></span>
+          <span className="dots3"></span>
         </div>
       </div>
     </>

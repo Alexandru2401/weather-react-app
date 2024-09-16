@@ -7,13 +7,16 @@ export default function FirstHomeComp() {
 
   return (
     <div className="flex align-center justify-center flex-col my-6">
-      <h2 className="text-5xl font-semibold mx-auto my-3">Weahter can be unpredictable</h2>
+      <h2 className="text-5xl font-semibold mx-auto my-3">
+        Weahter can be unpredictable
+      </h2>
       <p className="text-xl mx-auto mb-3">Be one step ahead of it!</p>
       <Link to="/about" className="mx-auto">
         <Button className="bg-slate-400 w-36">Explore benefits</Button>
       </Link>
+      {/* Here will be a line to connect all the cards */}
       <div className="flex align-center justify-around my-5">
-        <Card className={cardStyle}>
+        <Card className={`${cardStyle} bg-slate-200`}>
           <img src={bgImg} className="w-80 rounded-md" alt="Weather Forecast" />
           <h3 className="text-xl font-semibold mt-2">
             Accurate Weather Forecasts
@@ -41,9 +44,7 @@ export default function FirstHomeComp() {
             current and forecasted weather conditions, ensuring you stay
             comfortable and stylish, no matter the weather.
           </p>
-          <Button className="bg-amber-600 w-48">
-            See weather forecast
-          </Button>
+          <Button className="bg-amber-600 w-48">See weather forecast</Button>
         </Card>
       </div>
     </div>
