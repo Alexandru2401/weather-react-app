@@ -5,10 +5,10 @@ import Button from "./Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ThunderstormIcon from '@mui/icons-material/Thunderstorm';
 export default function FirstHomeComp() {
-  const cardStyle = "max-w-60 rounded-2xl";
+  const cardStyle = "max-w-60 rounded-2xl shadow-md shadow-slate-700";
 
   return (
-    <div className="flex align-center justify-center flex-col my-6 relative">
+    <div className="flex align-center justify-center flex-col my-20 relative">
       <h2 className="text-5xl font-semibold mx-auto my-3">
         Weahter can be unpredictable<ThunderstormIcon style={{fontSize:"35px"}}/>
       </h2>
@@ -20,7 +20,7 @@ export default function FirstHomeComp() {
       </Link>
       {/* Here will be a line to connect all the cards */}
       {/* <hr className="border-t-2 border-dashed border-red-500 my-5 w-full absolute z-10" /> */}
-      <div className="flex align-center justify-around my-5">
+      <div className="flex align-center justify-around my-10">
         <Card className={`${cardStyle} bg-slate-300`}>
           <img src={bgImg} className="w-80 rounded-md" alt="Weather Forecast" />
           <h3 className="text-xl font-semibold mt-2">

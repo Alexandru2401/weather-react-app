@@ -2,7 +2,7 @@ const date = new Date();
 const hours = date.getHours();
 export const minutes = date.getMinutes();
 export const day = date.getDay();
-
+console.log(day)
 const months = date.getMonth();
 
 const month = [
