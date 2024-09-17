@@ -15,8 +15,6 @@ export default function CurrentCity() {
     )
       .then((response) => response.json())
       .then((data) => setData(data));
-    console.log("data was fetched oance more");
-    console.log(data);
   }, [KEY]);
 
   // Extract the properties that i need
