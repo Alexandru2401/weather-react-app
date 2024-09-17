@@ -9,7 +9,7 @@ import Button from "./UI/Button";
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-around bg-slate-400 text-slate-200 p-4 sticky top-0 z-10">
+    <nav className="flex items-center justify-around bg-slate-400 text-slate-200 p-4 sticky top-0 z-10 font-semibold text-lg">
       <div>Weather Forecast</div>
       <ul className="flex items-center justify-center">
         <li className="p-1 m-1">

@@ -2,6 +2,7 @@ import Card from "./Card";
 import { Link } from "react-router-dom";
 import bgImg from "../../assets/carouselImg.jpg";
 import Button from "./Button";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 export default function FirstHomeComp() {
   const cardStyle = "max-w-60 rounded-2xl";
 
@@ -12,7 +13,9 @@ export default function FirstHomeComp() {
       </h2>
       <p className="text-xl mx-auto mb-3">Be one step ahead of it!</p>
       <Link to="/about" className="mx-auto">
-        <Button className="bg-slate-400 w-36">Explore benefits</Button>
+        <Button className="bg-slate-400 w-44">
+          Explore benefits <ArrowForwardIcon />
+        </Button>
       </Link>
       {/* Here will be a line to connect all the cards */}
       <div className="flex align-center justify-around my-5">
@@ -44,7 +47,9 @@ export default function FirstHomeComp() {
             current and forecasted weather conditions, ensuring you stay
             comfortable and stylish, no matter the weather.
           </p>
-          <Button className="bg-amber-600 w-48">See weather forecast</Button>
+          <Button className="bg-amber-600 w-52">
+            See weather forecast <ArrowForwardIcon />
+          </Button>
         </Card>
       </div>
     </div>
