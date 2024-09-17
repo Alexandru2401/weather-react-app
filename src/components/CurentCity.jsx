@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   formattedHours,
   day,
@@ -62,6 +63,7 @@ export default function CurrentCity() {
           <p className={basicStyle}>Humidity: {humidity}</p>
         </div>
       </div>
+      <Link to="/about" className="my-5">See weather forecast for next 10 days!</Link>
     </>
   );
 }

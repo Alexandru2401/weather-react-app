@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App bg-slate-200">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />}></Route>

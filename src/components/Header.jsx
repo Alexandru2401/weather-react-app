@@ -3,7 +3,7 @@ export default function Header() {
     "flex flex-col bg-orange-300 p-2 text-orange-100 m-1 rounded-md shadow-2xl";
 
   return (
-    <header className="h-[80vh] flex justify-around w-full bg-bgImg bg-no-repeat bg-left bg-cover">
+    <header className="h-[80vh] flex justify-around w-full bg-bgImg bg-no-repeat bg-left bg-cover rounded-b-3xl">
       <div className="left ">
         <h1 className="text-5xl text-slate-200 my-20 font-semibold">
           See wheather in your city!
