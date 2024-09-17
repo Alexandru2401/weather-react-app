@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {
   formattedHours,
   day,
-  minutes,
+  formattedMinutes,
   currentMonths,
 } from "../utils/currentDate";
 export default function CurrentCity() {
@@ -49,7 +49,7 @@ export default function CurrentCity() {
             Date: {day} {currentMonths}
           </p>
           <p className={basicStyle}>
-            {formattedHours}:{minutes}
+            {formattedHours}:{formattedMinutes}
           </p>
           <p className={basicStyle}>{celsiusTemperature}&deg; C</p>
           <p className={basicStyle}>Max temp: {celsiusMaxTemp}&deg; </p>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   formattedHours,
-  minutes,
+  formattedMinutes,
   day,
   currentMonths,
 } from "../utils/currentDate";
@@ -20,7 +20,7 @@ export default function Navbar() {
         </li>
       </ul>
       <div>
-        {formattedHours}:{minutes}
+        {formattedHours}:{formattedMinutes}
       </div>
       <Button className="bg-slate-700">Dark mode</Button>
       <div>
@@ -28,10 +28,10 @@ export default function Navbar() {
       </div>
       <ul>
         <Link className="m-2">
-          <Button className="bg-slate-900">Sing in</Button>
+          <Button className="bg-slate-900">Sign in</Button>
         </Link>
         <Link>
-          <Button className="bg-slate-300">Sing in</Button>
+          <Button className="bg-slate-300">Sign in</Button>
         </Link>
       </ul>
     </nav>

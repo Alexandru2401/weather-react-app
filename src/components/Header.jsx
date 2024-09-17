@@ -1,21 +1,30 @@
+import Button from "../components/UI/Button";
+import { Link } from "react-router-dom";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 export default function Header() {
   const basicCardStyle =
-    "flex flex-col bg-orange-300 p-2 text-orange-100 m-1 rounded-md shadow-2xl";
+    "flex flex-col bg-transparent p-3 m-2 text-xl text-slate-100 rounded-md shadow-md shadow-slate-600 backdrop-blur-md";
 
   return (
-    <header className="h-[80vh] flex justify-around w-full bg-bgImg bg-no-repeat bg-left bg-cover rounded-b-3xl">
-      <div className="left ">
-        <h1 className="text-5xl text-slate-200 my-20 font-semibold">
+    <header className=" realative h-[80vh] flex justify-around w-full bg-bgImg bg-no-repeat bg-left bg-cover rounded-b-3xl">
+      <section>
+        <h1 className="text-7xl my-16 font-semibold  text-transparent bg-gradient-to-r from-slate-100 via-gray-700 to-black bg-clip-text py-3">
           See wheather in your city!
         </h1>
-        <div className="w-60 my-20">
-          <p className="text-slate-950 text-xl shadow-2xl p-3 rounded-2xl backdrop-blur-sm">
+        <div className="w-60 my-12">
+          <p className="text-slate-950 text-xl shadow-2xl shadow-slate-600 p-3 rounded-2xl backdrop-blur-md">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
             eius voluptatibus, recusandae suscipit quas harum omnis nam
             blanditiis.
           </p>
-          {/* Here will be output wheater from 3 city bu default */}
-          <div className="w-80 flex my-20">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <Button className="bg-slate-400 w-44 shadow-md shadow-slate-600">
+              <Link>
+                Get started! <ArrowForwardIcon />
+              </Link>
+            </Button>
+          </div>
+          <div className="w-80 flex my-16">
             <div className={basicCardStyle}>
               <p>
                 20&deg;<span>C</span>
@@ -39,8 +48,8 @@ export default function Header() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="right my-44">
+      </section>
+      <section className="my-44 backdrop-blur-md p-4 shadow-md rounded-xl">
         <div>
           <p className="mb-5">
             <span className="text-8xl text-slate-100">40&deg; C</span>
@@ -51,7 +60,7 @@ export default function Header() {
             Wind: <span>20km/h</span>
           </p>
         </div>
-      </div>
+      </section>
     </header>
   );
 }

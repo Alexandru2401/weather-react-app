@@ -1,8 +1,8 @@
 const date = new Date();
 const hours = date.getHours();
-export const minutes = date.getMinutes();
+const minutes = date.getMinutes();
 export const day = date.getDay();
-console.log(day)
+console.log(day);
 const months = date.getMonth();
 
 const month = [
@@ -28,4 +28,12 @@ if (hours < 10) {
   formattedHours = `0${hours}`;
 } else {
   formattedHours = hours;
+}
+
+export let formattedMinutes;
+
+if (minutes < 10) {
+  formattedMinutes = `0${minutes}`;
+} else {
+  formattedMinutes = minutes;
 }
