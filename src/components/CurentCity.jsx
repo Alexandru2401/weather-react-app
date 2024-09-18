@@ -13,7 +13,7 @@ import ThermostatIcon from "@mui/icons-material/Thermostat";
 import AirIcon from "@mui/icons-material/Air";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import DescriptionIcon from "@mui/icons-material/Description";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function CurrentCity() {
   const KEY = process.env.REACT_APP_API_KEY;
@@ -57,28 +57,31 @@ export default function CurrentCity() {
   }
   // Style
   const basicStyle =
-    "text-2xl text-slate-100 mb-3 shadow-2xl p-3 rounded-2xl backdrop-blur-2xl";
+    "text-2xl text-slate-900 mb-3 shadow-2xl p-3 rounded-2xl backdrop-blur-2xl";
   const bg =
     " linear-gradient(22deg, rgba(142,215,247,1) 1%, rgba(219,219,231,1) 50%, rgba(156,188,235,1) 100%)";
   return (
     <>
-      <h2 className="my-10 text-center text-5xl font-semibold  text-transparent bg-gradient-to-r from-slate-100 via-gray-700 to-black bg-clip-text py-3">
+      <h2 className="mt-10 mb-5 text-center text-5xl font-semibold  text-transparent bg-gradient-to-r from-slate-100 via-gray-700 to-black bg-clip-text py-3">
         Current City: {city}
       </h2>
-      <form action="" onSubmit={handleSearchCity}>
-        <input
+      <form action="" onSubmit={handleSearchCity} className="flex items-center justify-center">
+        <input className="w-100 h-full text-slate-950 shadow-2xl p-2 shadow-slate-800 rounded-3xl placeholder:text-slate-950 placeholder:p-2"
+          placeholder="Search for a city..."
           type="text"
           onChange={(e) => setSearchCity(e.target.value)}
           value={searchCity}
         />
-        <button>Search</button>
+        <button className="mx-2">
+          <SearchIcon />
+        </button>
       </form>
       <div
         style={{ background: bg }}
         className="my-4 p-3 flex items-center justify-around shadow-md shadow-slate-600 rounded-2xl"
       >
         <div>
-          <h3 className="text-4xl text-slate-100 my-4 shadow-2xl p-3 rounded-2xl backdrop-blur-lg">
+          <h3 className="text-4xl text-slate-900 my-4 shadow-2xl p-3 rounded-2xl backdrop-blur-lg">
             <PlaceIcon /> City: {city}
           </h3>
           <p className={basicStyle}>
