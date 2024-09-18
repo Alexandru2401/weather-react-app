@@ -1,11 +1,24 @@
+import { useState, useEffect } from "react";
 import PlaceIcon from "@mui/icons-material/Place";
 import TodayIcon from "@mui/icons-material/Today";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ThermostatIcon from "@mui/icons-material/Thermostat";
 import AirIcon from "@mui/icons-material/Air";
-import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import DescriptionIcon from "@mui/icons-material/Description";
 export default function WeatherForecast() {
+  const KEY = process.env.REACT_APP_API_KEY;
+  const [data, setData] = useState([]);
+
+  const city = "Bucharest";
+  useEffect(() => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=ro&units=metric&appid=${KEY}`
+    )
+      .then((response) => response.json())
+      .then((data) => setData(data));
+    console.log(data);
+  }, [city, KEY]);
+  
   const basicStyle =
     "text-2xl text-slate-900 mb-3 shadow-2xl p-3 rounded-2xl backdrop-blur-2xl";
   const bg =
