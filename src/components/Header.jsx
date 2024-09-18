@@ -19,7 +19,7 @@ export default function Header() {
           </p>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <Button className="bg-slate-400 w-44 shadow-md shadow-slate-600">
-              <Link>
+              <Link to="/about">
                 Get started! <ArrowForwardIcon />
               </Link>
             </Button>
