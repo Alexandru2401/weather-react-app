@@ -1,6 +1,11 @@
 import Button from "../components/UI/Button";
 import { Link } from "react-router-dom";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import XIcon from "@mui/icons-material/X";
+import ShareIcon from "@mui/icons-material/Share";
+
 export default function Header() {
   const basicCardStyle =
     "flex flex-col bg-transparent p-3 m-2 text-xl text-slate-100 rounded-md shadow-md shadow-slate-600 backdrop-blur-md";
@@ -61,6 +66,18 @@ export default function Header() {
           </p>
         </div>
       </section>
+      <span>
+        <ShareIcon />
+      </span>
+      <span>
+        <InstagramIcon />
+      </span>
+      <span>
+        <FacebookIcon />
+      </span>
+      <span>
+        <XIcon />
+      </span>
     </header>
   );
 }
