@@ -2,10 +2,8 @@ import WeatherForecast from "../components/about/WeatherForecast";
 
 export default function About() {
   return (
-    <div>
-      <section>
-        <WeatherForecast />
-      </section>
+    <div className="w-10/12 m-auto">
+      <WeatherForecast />
     </div>
   );
 }

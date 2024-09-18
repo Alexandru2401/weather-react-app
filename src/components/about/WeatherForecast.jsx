@@ -1,64 +1,104 @@
 import { useState, useEffect } from "react";
-import PlaceIcon from "@mui/icons-material/Place";
-import TodayIcon from "@mui/icons-material/Today";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ThermostatIcon from "@mui/icons-material/Thermostat";
 import AirIcon from "@mui/icons-material/Air";
 import DescriptionIcon from "@mui/icons-material/Description";
+import SearchIcon from "@mui/icons-material/Search";
+import Button from "../UI/Button";
+
 export default function WeatherForecast() {
   const KEY = process.env.REACT_APP_API_KEY;
   const [data, setData] = useState([]);
+  const [city, setCity] = useState("Bucharest");
+  const [searchCity, setSearchCity] = useState("");
 
-  const city = "Bucharest";
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=ro&units=metric&appid=${KEY}`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=en&units=metric&appid=${KEY}`
     )
       .then((response) => response.json())
       .then((data) => setData(data));
-    console.log(data);
   }, [city, KEY]);
-  
+
+  //Destructuring list properties
+  const { list } = data;
+  //   Set a empty object for days
+  const days = {};
+
+  if (list) {
+    list.forEach((elem) => {
+      const { dt } = elem;
+      const date = new Date(dt * 1000);
+      const day = date.toLocaleDateString("en-EN", { weekday: "long" });
+      const hour = date.getHours();
+
+      //Set just one hour for dysplaing weathe
+      if (hour === 12) {
+        if (!days[day]) {
+          days[day] = elem;
+        }
+      }
+    });
+  }
+
+  function handleSearchCity(e) {
+    e.preventDefault();
+    if (searchCity.trim()) {
+      setCity(searchCity);
+      setSearchCity("");
+    }
+  }
+
   const basicStyle =
     "text-2xl text-slate-900 mb-3 shadow-2xl p-3 rounded-2xl backdrop-blur-2xl";
   const bg =
-    " linear-gradient(22deg, rgba(142,215,247,1) 1%, rgba(219,219,231,1) 50%, rgba(156,188,235,1) 100%)";
+    "linear-gradient(22deg, rgba(142,215,247,1) 1%, rgba(219,219,231,1) 50%, rgba(156,188,235,1) 100%)";
+
   return (
     <section className="flex flex-col items-center">
-      <h2 className="mt-10 mb-5 text-center text-5xl font-semibold  text-transparent bg-gradient-to-r from-slate-300 via-gray-700 to-black bg-clip-text py-3">
-        Current City:
+      <h2 className="mt-10 mb-5 text-center text-5xl font-semibold text-transparent bg-gradient-to-r from-slate-300 via-gray-700 to-black bg-clip-text py-3">
+        Current City: {city}
       </h2>
-      <div
-        style={{ background: bg }}
-        className="w-3/4 my-4 p-3 flex items-center justify-around shadow-md shadow-slate-600 rounded-2xl"
+      <form
+        action=""
+        onSubmit={handleSearchCity}
+        className="flex items-center justify-center"
       >
-        <div>
-          <h3 className="text-4xl text-slate-900 my-4 shadow-2xl p-3 rounded-2xl backdrop-blur-lg">
-            <PlaceIcon /> City:
-          </h3>
-          <p className={basicStyle}>
-            <TodayIcon /> Date:
-          </p>
-          <p className={basicStyle}>
-            <AccessTimeIcon />
-          </p>
-          <p className={basicStyle}>
-            <ThermostatIcon />
-          </p>
+        <input
+          className="w-100 h-full text-slate-950 shadow-2xl p-2 shadow-slate-800 rounded-3xl placeholder:text-slate-950 placeholder:p-2"
+          placeholder="Search for a city..."
+          type="text"
+          onChange={(e) => setSearchCity(e.target.value)}
+          value={searchCity}
+        />
+        <button className="mx-2">
+          <SearchIcon />
+        </button>
+      </form>
+      {Object.keys(days).map((day) => (
+        <div key={day} className="w-full my-1">
+          <h3 className="text-4xl font-bold mb-4 text-slate-900">{day}</h3>
+          <div
+            style={{ background: bg }}
+            className="my-4 p-3 flex justify-between items-center shadow-md shadow-slate-600 rounded-2xl"
+          >
+            <div className="flex flex-wrap justify-between w-full">
+              <p className={basicStyle}>
+                <ThermostatIcon /> Temperature: {days[day].main.temp}&deg;C
+              </p>
+              <p className={basicStyle}>
+                Real feel: {days[day].main.feels_like}&deg;C
+              </p>
+              <p className={basicStyle}>
+                <DescriptionIcon /> Description:{" "}
+                {days[day].weather[0].description}
+              </p>
+              <p className={basicStyle}>
+                <AirIcon /> Wind: {days[day].wind.speed} km/h
+              </p>
+            </div>
+          </div>
         </div>
-        <div>
-          <p className={basicStyle}>Real feel:&deg; C</p>
-          <p className={basicStyle}>
-            <DescriptionIcon />
-            Description:
-          </p>
-          {/* <img src={iconUrl} alt="" /> */}
-          <p className={basicStyle}>
-            <AirIcon />
-            Wind: km/h
-          </p>
-        </div>
-      </div>
+      ))}
     </section>
   );
 }
