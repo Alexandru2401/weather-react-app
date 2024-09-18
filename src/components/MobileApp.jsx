@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 export default function MobileApp() {
   const spanStyle =
     "shadow-2xl p-3 rounded-2xl backdrop-blur-lg absolute text-xl text-slate-700 shadow-md";
-  const shadow = "shadow-md shadow-slate-700"
+  const shadow = "shadow-md shadow-slate-700";
   return (
     <section className="flex flex-col justify-center items-center relative">
       <h2 className="text-5xl font-semibold my-10 text-slate-950">
@@ -30,8 +30,12 @@ export default function MobileApp() {
           <h3>Rain or Shine, We've Got You Covered</h3>{" "}
           <p> The Ultimate Weather Companion!</p>
         </div>
-        <span className={`${spanStyle} ${shadow} right-32`}>Temperature in your location</span>
-        <span className={`${spanStyle} ${shadow} left-80 top-1/3`}>Daily forecast</span>
+        <span className={`${spanStyle} ${shadow} right-32`}>
+          Temperature in your location
+        </span>
+        <span className={`${spanStyle} ${shadow} left-80 top-1/3`}>
+          Daily forecast
+        </span>
         <img
           src={rain}
           className="rounded-full h-96 w-64 object-cover outline-dashed outline-offset-8 outline-blue-400"
@@ -42,17 +46,19 @@ export default function MobileApp() {
         <Link className="mx-2 bg-slate-100 rounded-full p-1">
           <DownloadIcon />
         </Link>
-        <Link  className="bg-slate-100 rounded-full p-1">
+        <Link className="bg-slate-100 rounded-full p-1">
           <AppleIcon />
         </Link>
         <Link className="mx-2  bg-slate-100 rounded-full p-1">
           <AndroidIcon />
         </Link>
-        <span className="text-slate-900 mx-2 bg-slate-200 rounded-3xl p-2">App in your pocket! Donwload it!</span>
+        <span className="text-slate-900 mx-2 bg-slate-200 rounded-3xl p-2">
+          App in your pocket! Download it!
+        </span>
       </div>
       <div className="absolute top-12 right-3 flex flex-col gap-2">
         {" "}
-        <span  className="bg-slate-100 rounded-full p-1">
+        <span className="bg-slate-100 rounded-full p-1">
           <ShareIcon />
         </span>
         <span className=" bg-slate-100 rounded-full p-1">

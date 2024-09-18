@@ -66,18 +66,20 @@ export default function Header() {
           </p>
         </div>
       </section>
-      <span>
+      <div className="flex flex-col gap-1 my-3 absolute top-1/3 right-3">
+      <span className="bg-slate-100 rounded-full p-1">
         <ShareIcon />
       </span>
-      <span>
+      <span className=" bg-slate-100 rounded-full p-1">
         <InstagramIcon />
       </span>
-      <span>
+      <span className=" bg-slate-100 rounded-full p-1">
         <FacebookIcon />
       </span>
-      <span>
+      <span className=" bg-slate-100 rounded-full p-1">
         <XIcon />
       </span>
+      </div>
     </header>
   );
 }
