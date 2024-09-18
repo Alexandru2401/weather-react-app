@@ -1,5 +1,5 @@
 import rain from "../../assets/rain.jpg";
-import Card from "./Card";
+import Card from "../UI/Card";
 import { items } from "../../api/carouselContent";
 import { useState } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";

@@ -1,7 +1,7 @@
-import Card from "./Card";
+import Card from "../UI/Card";
 import { Link } from "react-router-dom";
 import bgImg from "../../assets/carouselImg.jpg";
-import Button from "./Button";
+import Button from "../UI/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ThunderstormIcon from '@mui/icons-material/Thunderstorm';
 export default function FirstHomeComp() {
@@ -9,12 +9,12 @@ export default function FirstHomeComp() {
 
   return (
     <div className="flex align-center justify-center flex-col my-20 relative">
-      <h2 className="text-5xl font-semibold mx-auto my-3">
+      <h2 className="text-5xl font-semibold mx-auto my-3 ">
         Weahter can be unpredictable<ThunderstormIcon style={{fontSize:"35px"}}/>
       </h2>
       <p className="text-xl mx-auto mb-3">Be one step ahead of it!</p>
       <Link to="/about" className="mx-auto">
-        <Button className="bg-slate-400 w-44">
+        <Button className="bg-slate-400 w-44 shadow-md shadow-slate-800">
           Explore benefits <ArrowForwardIcon />
         </Button>
       </Link>

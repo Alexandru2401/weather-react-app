@@ -5,7 +5,7 @@ import {
   day,
   formattedMinutes,
   currentMonths,
-} from "../utils/currentDate";
+} from "../../utils/currentDate";
 import PlaceIcon from "@mui/icons-material/Place";
 import TodayIcon from "@mui/icons-material/Today";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -14,7 +14,7 @@ import AirIcon from "@mui/icons-material/Air";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import DescriptionIcon from "@mui/icons-material/Description";
 import SearchIcon from "@mui/icons-material/Search";
-import Button from "./UI/Button";
+import Button from "../UI/Button";
 
 export default function CurrentCity() {
   const KEY = process.env.REACT_APP_API_KEY;

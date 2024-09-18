@@ -2,7 +2,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
 import ShareIcon from "@mui/icons-material/Share";
-import rain from "../assets/rain.jpg";
+import rain from "../../assets/rain.jpg";
 import DownloadIcon from "@mui/icons-material/Download";
 import AppleIcon from "@mui/icons-material/Apple";
 import AndroidIcon from "@mui/icons-material/Android";

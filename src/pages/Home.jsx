@@ -1,8 +1,8 @@
-import CurrentCity from "../components/CurentCity";
+import CurrentCity from "../components/home/CurentCity";
 import Header from "../components/Header";
-import FirstHomeComp from "../components/UI/FirstHomeComp";
-import CarouselHome from "../components/UI/CarouselHome";
-import MobileApp from "../components/MobileApp";
+import FirstHomeComp from "../components/home/FirstHomeComp";
+import CarouselHome from "../components/home/CarouselHome";
+import MobileApp from "../components/home/MobileApp";
 export default function Home() {
   return (
     <>
@@ -16,4 +16,3 @@ export default function Home() {
     </>
   );
 }
-
