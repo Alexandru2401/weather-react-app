@@ -4,6 +4,7 @@ import {
   formattedMinutes,
   day,
   currentMonths,
+  monthDay
 } from "../utils/currentDate";
 import Button from "./UI/Button";
 
@@ -24,7 +25,7 @@ export default function Navbar() {
       </div>
       <Button className="bg-slate-700">Dark mode</Button>
       <div>
-        {day} {currentMonths}
+        {day}, {monthDay} {currentMonths}
       </div>
       <ul>
         <Link className="m-2">

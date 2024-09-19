@@ -5,6 +5,7 @@ import {
   day,
   formattedMinutes,
   currentMonths,
+  monthDay
 } from "../../utils/currentDate";
 import PlaceIcon from "@mui/icons-material/Place";
 import TodayIcon from "@mui/icons-material/Today";
@@ -66,8 +67,13 @@ export default function CurrentCity() {
       <h2 className="mt-10 mb-5 text-center text-5xl font-semibold  text-transparent bg-gradient-to-r from-slate-300 via-gray-700 to-black bg-clip-text py-3">
         Current City: {city}
       </h2>
-      <form action="" onSubmit={handleSearchCity} className="flex items-center justify-center">
-        <input className="w-100 h-full text-slate-950 shadow-2xl p-2 shadow-slate-800 rounded-3xl placeholder:text-slate-950 placeholder:p-2"
+      <form
+        action=""
+        onSubmit={handleSearchCity}
+        className="flex items-center justify-center"
+      >
+        <input
+          className="w-100 h-full text-slate-950 shadow-2xl p-2 shadow-slate-800 rounded-3xl placeholder:text-slate-950 placeholder:p-2"
           placeholder="Search for a city..."
           type="text"
           onChange={(e) => setSearchCity(e.target.value)}
@@ -86,7 +92,7 @@ export default function CurrentCity() {
             <PlaceIcon /> City: {city}
           </h3>
           <p className={basicStyle}>
-            <TodayIcon /> Date: {day} {currentMonths}
+            <TodayIcon /> Date: {day}, {monthDay} {currentMonths}
           </p>
           <p className={basicStyle}>
             <AccessTimeIcon />
@@ -117,7 +123,9 @@ export default function CurrentCity() {
         </div>
       </div>
       <Link to="/about" className="my-5">
-        <Button className="bg-slate-900">See weather forecast for next 10 days!</Button>
+        <Button className="bg-slate-900">
+          See weather forecast for next 5 days!
+        </Button>
       </Link>
     </section>
   );

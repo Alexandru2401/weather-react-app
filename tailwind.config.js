@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'bgImg': "url('/src/assets/carouselImg.jpg')",
+        'bgImg': "url('/src/assets/bg-img.jpg')",
       },
     },
   },

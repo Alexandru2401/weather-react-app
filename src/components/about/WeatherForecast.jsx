@@ -49,7 +49,7 @@ export default function WeatherForecast() {
   }
 
   const basicStyle =
-    "text-2xl text-slate-900 mb-3 shadow-2xl p-3 rounded-2xl backdrop-blur-2xl";
+    "text-xl text-slate-900 my-2 shadow-2xl p-2 rounded-2xl bg-slate-200 shadow-xl shadow-slate-600";
   const bg =
     "linear-gradient(22deg, rgba(142,215,247,1) 1%, rgba(219,219,231,1) 50%, rgba(156,188,235,1) 100%)";
 
@@ -74,31 +74,30 @@ export default function WeatherForecast() {
           <SearchIcon />
         </button>
       </form>
-      {Object.keys(days).map((day) => (
-        <div key={day} className="w-full my-1">
-          <h3 className="text-4xl font-bold mb-4 text-slate-900">{day}</h3>
-          <div
-            style={{ background: bg }}
-            className="my-4 p-3 flex justify-between items-center shadow-md shadow-slate-600 rounded-2xl"
-          >
-            <div className="flex flex-wrap justify-between w-full">
-              <p className={basicStyle}>
-                <ThermostatIcon /> Temperature: {days[day].main.temp}&deg;C
-              </p>
-              <p className={basicStyle}>
-                Real feel: {days[day].main.feels_like}&deg;C
-              </p>
-              <p className={basicStyle}>
-                <DescriptionIcon /> Description:{" "}
-                {days[day].weather[0].description}
-              </p>
-              <p className={basicStyle}>
-                <AirIcon /> Wind: {days[day].wind.speed} km/h
-              </p>
+      <section className="w-full my-4 p-5 rounded-3xl" style={{ background: bg }}>
+        {Object.keys(days).map((day) => (
+          <div key={day}>
+            <h3 className="text-2xl font-bold mb-4 text-slate-900">{day}</h3>
+            <div className="my-2 p-2 flex justify-between items-center shadow-md shadow-slate-600 rounded-2xl">
+              <div className="flex flex-wrap justify-between w-full">
+                <p className={basicStyle}>
+                  <ThermostatIcon /> Temperature: {days[day].main.temp}&deg;C
+                </p>
+                <p className={basicStyle}>
+                  Real feel: {days[day].main.feels_like}&deg;C
+                </p>
+                <p className={basicStyle}>
+                  <DescriptionIcon /> Description:{" "}
+                  {days[day].weather[0].description}
+                </p>
+                <p className={basicStyle}>
+                  <AirIcon /> Wind: {days[day].wind.speed} km/h
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </section>
     </section>
   );
 }

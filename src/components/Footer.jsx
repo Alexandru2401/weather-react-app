@@ -15,6 +15,7 @@ export default function Footer() {
           <Link
             className="text-gray-950 underline decoration-1"
             to="https://openweathermap.org/api"
+            target="_blank"
           >
             OpenWeatherMap API
           </Link>
