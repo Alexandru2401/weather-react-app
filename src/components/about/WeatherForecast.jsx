@@ -3,25 +3,12 @@ import ThermostatIcon from "@mui/icons-material/Thermostat";
 import AirIcon from "@mui/icons-material/Air";
 import DescriptionIcon from "@mui/icons-material/Description";
 import SearchIcon from "@mui/icons-material/Search";
-import Button from "../UI/Button";
 
-export default function WeatherForecast() {
-  const KEY = process.env.REACT_APP_API_KEY;
-  const [data, setData] = useState([]);
-  const [city, setCity] = useState("Bucharest");
+export default function WeatherForecast({ data, city, onSubmit }) {
+  const { list } = data;
   const [searchCity, setSearchCity] = useState("");
 
-  useEffect(() => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=en&units=metric&appid=${KEY}`
-    )
-      .then((response) => response.json())
-      .then((data) => setData(data));
-  }, [city, KEY]);
-
-  //Destructuring list properties
-  const { list } = data;
-  //   Set a empty object for days
+  // Set an empty object for days
   const days = {};
 
   if (list) {
@@ -31,7 +18,7 @@ export default function WeatherForecast() {
       const day = date.toLocaleDateString("en-EN", { weekday: "long" });
       const hour = date.getHours();
 
-      //Set just one hour for dysplaing weathe
+      // Set just one hour for displaying weather
       if (hour === 12) {
         if (!days[day]) {
           days[day] = elem;
@@ -40,14 +27,13 @@ export default function WeatherForecast() {
     });
   }
 
-  function handleSearchCity(e) {
+  function handleSubmit(e){
     e.preventDefault();
     if (searchCity.trim()) {
-      setCity(searchCity);
+      onSubmit(searchCity); 
       setSearchCity("");
     }
   }
-
   const basicStyle =
     "text-xl text-slate-900 my-2 shadow-2xl p-2 rounded-2xl bg-slate-200 shadow-xl shadow-slate-600";
   const bg =
@@ -60,7 +46,7 @@ export default function WeatherForecast() {
       </h2>
       <form
         action=""
-        onSubmit={handleSearchCity}
+        onSubmit={handleSubmit}
         className="flex items-center justify-center"
       >
         <input
@@ -74,7 +60,10 @@ export default function WeatherForecast() {
           <SearchIcon />
         </button>
       </form>
-      <section className="w-full my-4 p-5 rounded-3xl" style={{ background: bg }}>
+      <section
+        className="w-full my-4 p-5 rounded-3xl"
+        style={{ background: bg }}
+      >
         {Object.keys(days).map((day) => (
           <div key={day}>
             <h3 className="text-2xl font-bold mb-4 text-slate-900">{day}</h3>
