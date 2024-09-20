@@ -18,8 +18,8 @@ Chartjs.register(
   Legend
 );
 
-export default function BarChart({data}) {
-  const labels = [1, 2, 3, 4, 5]
+export default function BarChart({ data }) {
+  const labels = [1, 2, 3, 4, 5];
   const barData = {
     labels: labels,
     datasets: [
@@ -27,9 +27,15 @@ export default function BarChart({data}) {
         label: "Pressure",
         data: data.map((item) => item.pressure),
         hoverOffset: 4,
-        backgroundColor: "rgba(75,192,192,0.4)",
-        borderColor: "rgba(75,192,192,1)",
-        borderWidth: 2,
+        backgroundColor: [
+          "rgb(253 186 116)",
+          "rgb(190 242 100)",
+          "rgb(34 211 238)",
+          "rgb(190 18 60)",
+          "rgb(55 65 81)",
+        ],
+        borderColor: "#000",
+        borderWidth: 1,
         fill: true,
       },
     ],
@@ -37,19 +43,20 @@ export default function BarChart({data}) {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'top',
+        position: "top",
       },
       title: {
         display: true,
-        text: 'Pressure Levels in the last 5 days',
+        text: "Pressure Levels in the last 5 days",
       },
     },
   };
 
   return (
-    <div  className="w-1/2 mx-auto flex items-center justify-center">
+    <div className="w-1/2 min-h-72  mx-auto flex items-center justify-center">
       <Bar options={options} data={barData} />
     </div>
   );

@@ -21,16 +21,12 @@ export default function PieChart({
         data: [medianWindDegree, medianWindSpeed, medianWindGust],
         hoverOffset: 4,
         backgroundColor: [
-          "rgba(75,192,192,0.4)",
-          "rgba(255,99,132,0.4)",
-          "rgba(54,162,235,0.4)",
+            "rgb(253 186 116)",
+            "rgb(190 18 60)",
+            "rgb(34 211 238)",
         ],
-        borderColor: [
-          "rgba(75,192,192,1)",
-          "rgba(255,99,132,1)",
-          "rgba(54,162,235,1)",
-        ],
-        borderWidth: 2,
+        borderColor:"#000",
+        borderWidth: 1,
         fill: true,
       },
     ],
@@ -39,6 +35,7 @@ export default function PieChart({
   const options = {
     circumference: "360",
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top",

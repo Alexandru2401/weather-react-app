@@ -8,6 +8,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler
 } from "chart.js";
 
 Chartjs.register(
@@ -17,7 +18,8 @@ Chartjs.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 );
 
 export default function LineChart({ data }) {
@@ -31,9 +33,9 @@ export default function LineChart({ data }) {
         label: "Humidity",
         data: data.map((item) => item.humidity),
         hoverOffset: 4,
-        backgroundColor: "rgba(75,192,192,0.4)",
-        borderColor: "rgba(75,192,192,1)",
-        borderWidth: 2,
+        backgroundColor: "rgba(255, 0, 0, 0.26)",
+        borderColor: "#000",
+        borderWidth: 1,
         fill: true,
       },
     ],
@@ -41,6 +43,7 @@ export default function LineChart({ data }) {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',
@@ -53,7 +56,7 @@ export default function LineChart({ data }) {
   };
 
   return (
-    <div className="w-1/2 mx-auto flex items-center justify-center">
+    <div className="w-1/2 min-h-72 mx-auto flex items-center justify-center">
       <Line options={options} data={chartData} />
     </div>
   );
