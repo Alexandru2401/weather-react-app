@@ -59,7 +59,6 @@ export default function About() {
     windData.reduce((total, item) => total + item.windGust, 0) / 5
   ).toFixed(2);
 
-  const windChartData = [medianWindDegree, medianWindSpeed, medianWindDegree];
   function handleSearchCity(newCity) {
     if (newCity.trim()) {
       setCity(newCity);
@@ -69,11 +68,15 @@ export default function About() {
   return (
     <div className="w-10/12 m-auto">
       <WeatherForecast data={data} city={city} onSubmit={handleSearchCity} />
-      <div className="flex ">
-        <LineChart data={humidityData} />
-        <BarChart data={pressureData} />
-        <PieChart />
-      </div>
+
+      <LineChart data={humidityData} />
+      <BarChart data={pressureData} />
+
+      <PieChart
+        medianWindSpeed={medianWindSpeed}
+        medianWindDegree={medianWindDegree}
+        medianWindGust={medianWindGust}
+      />
     </div>
   );
 }

@@ -49,7 +49,7 @@ export default function BarChart({data}) {
   };
 
   return (
-    <div  className="w-1/2 flex items-center justify-center">
+    <div  className="w-1/2 mx-auto flex items-center justify-center">
       <Bar options={options} data={barData} />
     </div>
   );
