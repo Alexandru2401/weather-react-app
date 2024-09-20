@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import WeatherForecast from "../components/about/WeatherForecast";
 import LineChart from "../components/about/LineChart";
+import BarChart from "../components/about/BarChart";
 export default function About() {
   const KEY = process.env.REACT_APP_API_KEY;
   const [data, setData] = useState([]);
@@ -12,6 +13,7 @@ export default function About() {
     )
       .then((response) => response.json())
       .then((data) => setData(data));
+    console.log(data);
   }, [city, KEY]);
 
   const humidityData = data.list
@@ -19,7 +21,13 @@ export default function About() {
         humidity: item.main.humidity,
       }))
     : [];
-console.log(humidityData)
+
+  const pressureData = data.list
+    ? data.list.map((item) => ({
+        pressure: item.main.pressure,
+      }))
+    : [];
+
   function handleSearchCity(newCity) {
     if (newCity.trim()) {
       setCity(newCity);
@@ -29,7 +37,8 @@ console.log(humidityData)
   return (
     <div className="w-10/12 m-auto">
       <WeatherForecast data={data} city={city} onSubmit={handleSearchCity} />
-      <LineChart data={humidityData}/>
+      <LineChart data={humidityData} />
+      <BarChart />
     </div>
   );
 }
