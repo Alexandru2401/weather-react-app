@@ -9,10 +9,10 @@ export default function FirstHomeComp() {
 
   return (
     <div className="flex align-center justify-center flex-col my-20 relative">
-      <h2 className="text-5xl font-semibold mx-auto my-3 ">
+      <h2 className="text-2xl sm:text-3xl lg:text-5xl font-semibold mx-auto my-3 ">
         Weahter can be unpredictable<ThunderstormIcon style={{fontSize:"35px"}}/>
       </h2>
-      <p className="text-xl mx-auto mb-3">Be one step ahead of it!</p>
+      <p className="sm:text-xl lg:text-2xl mx-auto mb-3">Be one step ahead of it!</p>
       <Link to="/about" className="mx-auto">
         <Button className="bg-slate-400 w-44 shadow-md shadow-slate-800">
           Explore benefits <ArrowForwardIcon />
@@ -20,8 +20,8 @@ export default function FirstHomeComp() {
       </Link>
       {/* Here will be a line to connect all the cards */}
       {/* <hr className="border-t-2 border-dashed border-red-500 my-5 w-full absolute z-10" /> */}
-      <div className="flex align-center justify-around my-10">
-        <Card className={`${cardStyle} bg-slate-300`}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center sm:my-6 md:my-16">
+        <Card className={`${cardStyle} bg-slate-300 sm:mx-auto`}>
           <img src={bgImg} className="w-80 rounded-md" alt="Weather Forecast" />
           <h3 className="text-xl font-semibold mt-2">
             Accurate Weather Forecasts
@@ -33,7 +33,7 @@ export default function FirstHomeComp() {
           </p>
         </Card>
 
-        <Card className={`${cardStyle} bg-slate-400`}>
+        <Card className={`${cardStyle} bg-slate-400 sm:mx-auto`}>
           <h2 className="text-xl font-semibold">Weather Warnings</h2>
           <p>
             Never be caught off guard again. Our real-time weather alerts keep
@@ -42,7 +42,7 @@ export default function FirstHomeComp() {
           </p>
         </Card>
 
-        <Card className={`${cardStyle} bg-slate-100`}>
+        <Card className={`${cardStyle} bg-slate-100 sm:mx-auto`}>
           <h2 className="text-xl font-semibold">Outfit Recommendations</h2>
           <p>
             Wondering what to wear? Our outfit recommendations are based on

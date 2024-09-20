@@ -35,6 +35,6 @@ export default function Navbar() {
           <Button className="bg-slate-300">Sign in</Button>
         </Link>
       </ul>
-    </nav>
+    </nav> 
   );
 }
