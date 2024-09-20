@@ -3,6 +3,8 @@ import WeatherForecast from "../components/about/WeatherForecast";
 import LineChart from "../components/about/LineChart";
 import BarChart from "../components/about/BarChart";
 import PieChart from "../components/about/PieChart";
+import WhyUs from "../components/about/WhyUs";
+import Info from "../components/about/Info";
 export default function About() {
   const KEY = process.env.REACT_APP_API_KEY;
   const [data, setData] = useState([]);
@@ -67,11 +69,11 @@ export default function About() {
 
   return (
     <div className="w-10/12 m-auto">
+      <Info/>
+      <WhyUs/>
       <WeatherForecast data={data} city={city} onSubmit={handleSearchCity} />
-
       <LineChart data={humidityData} />
       <BarChart data={pressureData} />
-
       <PieChart
         medianWindSpeed={medianWindSpeed}
         medianWindDegree={medianWindDegree}
