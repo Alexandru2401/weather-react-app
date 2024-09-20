@@ -16,17 +16,22 @@ export default function About() {
     console.log(data);
   }, [city, KEY]);
 
-  const humidityData = data.list
+  const allHumidityData = data.list
     ? data.list.map((item) => ({
         humidity: item.main.humidity,
       }))
     : [];
 
-  const pressureData = data.list
+  const humidityData = allHumidityData.slice(35, 40);
+  // console.log(hum)
+
+  const allPressureData = data.list
     ? data.list.map((item) => ({
         pressure: item.main.pressure,
       }))
     : [];
+
+  const pressureData = allPressureData.slice(35, 40);
 
   function handleSearchCity(newCity) {
     if (newCity.trim()) {
@@ -38,7 +43,7 @@ export default function About() {
     <div className="w-10/12 m-auto">
       <WeatherForecast data={data} city={city} onSubmit={handleSearchCity} />
       <LineChart data={humidityData} />
-      <BarChart />
+      <BarChart data={pressureData} />
     </div>
   );
 }

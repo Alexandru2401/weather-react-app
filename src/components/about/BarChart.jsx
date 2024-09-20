@@ -17,28 +17,40 @@ Chartjs.register(
   Tooltip,
   Legend
 );
-const data = {
-  labels: ["Red", "Blue", "Yellow"],
-  datasets: [
-    {
-      label: "My First Dataset",
-      data: [300, 50, 100],
-      backgroundColor: [
-        "rgb(255, 99, 132)",
-        "rgb(54, 162, 235)",
-        "rgb(255, 205, 86)",
-      ],
-      hoverOffset: 4,
-    },
-  ],
-};
 
-export default function BarChart() {
-  const options = {};
+export default function BarChart({data}) {
+  const labels = [1, 2, 3, 4, 5]
+  const barData = {
+    labels: labels,
+    datasets: [
+      {
+        label: "Pressure",
+        data: data.map((item) => item.pressure),
+        hoverOffset: 4,
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(75,192,192,1)",
+        borderWidth: 2,
+        fill: true,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Humidity Levels in the last 40 days',
+      },
+    },
+  };
 
   return (
     <div style={{ width: "50%", height: "300px" }}>
-      <Bar options={options} data={data} />
+      <Bar options={options} data={barData} />
     </div>
   );
 }
