@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import WeatherForecast from "../components/about/WeatherForecast";
-import LineChart from "../components/about/LineChart"
+import LineChart from "../components/about/LineChart";
 export default function About() {
   const KEY = process.env.REACT_APP_API_KEY;
   const [data, setData] = useState([]);
@@ -14,6 +14,12 @@ export default function About() {
       .then((data) => setData(data));
   }, [city, KEY]);
 
+  const humidityData = data.list
+    ? data.list.map((item) => ({
+        humidity: item.main.humidity,
+      }))
+    : [];
+console.log(humidityData)
   function handleSearchCity(newCity) {
     if (newCity.trim()) {
       setCity(newCity);
@@ -23,7 +29,7 @@ export default function About() {
   return (
     <div className="w-10/12 m-auto">
       <WeatherForecast data={data} city={city} onSubmit={handleSearchCity} />
-      <LineChart/>
+      <LineChart data={humidityData}/>
     </div>
   );
 }

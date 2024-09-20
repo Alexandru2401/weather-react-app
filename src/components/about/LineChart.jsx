@@ -19,27 +19,42 @@ Chartjs.register(
   Tooltip,
   Legend
 );
-export default function LineChart() {
-  const options = {};
-  const data = {
-    labels: ["Red", "Blue", "Yellow"],
+
+export default function LineChart({ data }) {
+  // Mapping through labels - i want to return all 40 data from humidity
+  const labels = data.map((_, index) => index + 1);
+
+  const chartData = {
+    labels: labels, 
     datasets: [
       {
-        label: "My First Dataset",
-        data: [300, 50, 100],
-        backgroundColor: [
-          "rgb(255, 99, 132)",
-          "rgb(54, 162, 235)",
-          "rgb(255, 205, 86)",
-        ],
+        label: "Humidity",
+        data: data.map((item) => item.humidity),
         hoverOffset: 4,
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(75,192,192,1)",
+        borderWidth: 1,
+        fill: true,
       },
     ],
   };
 
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Humidity Levels in the last 40 days',
+      },
+    },
+  };
+
   return (
-    <div>
-      <Line options={options} data={data} />
+    <div className="w-full h-[500px] flex items-center justify-center">
+      <Line options={options} data={chartData} />
     </div>
   );
 }
