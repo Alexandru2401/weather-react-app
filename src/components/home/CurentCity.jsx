@@ -59,7 +59,7 @@ export default function CurrentCity() {
   }
   // Style
   const basicStyle =
-    "text-2xl text-slate-900 mb-3 shadow-2xl p-3 rounded-2xl backdrop-blur-2xl";
+    "text-xl md:text-2xl text-slate-900 mb-3 shadow-2xl p-1 md:p-3 rounded-2xl backdrop-blur-2xl";
   const bg =
     " linear-gradient(22deg, rgba(142,215,247,1) 1%, rgba(219,219,231,1) 50%, rgba(156,188,235,1) 100%)";
   return (
@@ -85,10 +85,10 @@ export default function CurrentCity() {
       </form>
       <div
         style={{ background: bg }}
-        className="w-3/4 my-4 p-3 flex items-center justify-around shadow-md shadow-slate-600 rounded-2xl"
+        className="w-full md:w-3/4 my-4 p-3 flex items-center justify-around shadow-md shadow-slate-600 rounded-2xl gap-4"
       >
         <div>
-          <h3 className="text-4xl text-slate-900 my-4 shadow-2xl p-3 rounded-2xl backdrop-blur-lg">
+          <h3 className="text-xl md:text-4xl text-slate-900 my-4 shadow-2xl p-1 md:p-3 rounded-2xl backdrop-blur-lg">
             <PlaceIcon /> City: {city}
           </h3>
           <p className={basicStyle}>
