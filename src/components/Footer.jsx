@@ -4,10 +4,10 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
 
 export default function Footer() {
-  const basicStyle = "text-lg text-slate-200 font-semibold mb-3";
+  const basicStyle = "text-md lg:xl text-slate-200 xl:font-semibold mb-3";
   const linkStyle = "text-gray-950 underline decoration-1 list-none text-lg font-semibold"
   return (
-    <footer className="bg-slate-400 py-5 flex justify-around mt-10 rounded-t-3xl">
+    <footer className="bg-slate-400 py-5 flex flex-col justify-center items-center lg:flex-row lg:justify-around mt-10 rounded-t-3xl gap-5">
       <div>
         <p className={basicStyle}>© 2024 WeatherApp. All rights reserved.</p>
         <p className={basicStyle}>
