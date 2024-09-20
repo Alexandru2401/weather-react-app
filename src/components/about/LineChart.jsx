@@ -47,13 +47,13 @@ export default function LineChart({ data }) {
       },
       title: {
         display: true,
-        text: 'Humidity Levels in the last 40 days',
+        text: 'Humidity Levels in the last 5 days',
       },
     },
   };
 
   return (
-    <div className="w-full h-[500px] flex items-center justify-center">
+    <div className="w-1/2 flex items-center justify-center">
       <Line options={options} data={chartData} />
     </div>
   );

@@ -43,13 +43,13 @@ export default function BarChart({data}) {
       },
       title: {
         display: true,
-        text: 'Humidity Levels in the last 40 days',
+        text: 'Pressure Levels in the last 5 days',
       },
     },
   };
 
   return (
-    <div style={{ width: "50%", height: "300px" }}>
+    <div  className="w-1/2 flex items-center justify-center">
       <Bar options={options} data={barData} />
     </div>
   );
