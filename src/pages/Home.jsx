@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="w-10/12 m-auto">
+      <main className="w-11/12 lg:w-10/12 m-auto">
         <FirstHomeComp />
         <CarouselHome />
         <CurrentCity />
