@@ -3,18 +3,24 @@ import { Link } from "react-router-dom";
 import bgImg from "../../assets/carouselImg.jpg";
 import Button from "../UI/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import ThunderstormIcon from '@mui/icons-material/Thunderstorm';
+import ThunderstormIcon from "@mui/icons-material/Thunderstorm";
 export default function FirstHomeComp() {
   const cardStyle = "max-w-60 rounded-2xl shadow-md shadow-slate-700";
 
   return (
-    <div className="flex align-center justify-center flex-col my-20 relative">
+    <div className="flex align-center justify-center flex-col my-5 md:my-20 relative">
       <h2 className="text-2xl sm:text-3xl lg:text-5xl font-semibold mx-auto my-3 ">
-        Weahter can be unpredictable<ThunderstormIcon style={{fontSize:"35px"}}/>
+        Weahter can be <br/>
+        <span>
+          unpredictable
+          <ThunderstormIcon style={{ fontSize: "35px" }} />
+        </span>
       </h2>
-      <p className="sm:text-xl lg:text-2xl mx-auto mb-3">Be one step ahead of it!</p>
+      <p className="sm:text-xl lg:text-2xl mx-auto mb-3">
+        Be one step ahead of it!
+      </p>
       <Link to="/about" className="mx-auto">
-        <Button className="bg-slate-400 w-44 shadow-md shadow-slate-800">
+        <Button className="bg-slate-400 w-44 shadow-md shadow-slate-800 mb-5">
           Explore benefits <ArrowForwardIcon />
         </Button>
       </Link>

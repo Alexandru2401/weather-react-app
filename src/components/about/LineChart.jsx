@@ -56,7 +56,7 @@ export default function LineChart({ data }) {
   };
 
   return (
-    <div className="w-1/2 min-h-72 mx-auto flex items-center justify-center">
+    <div className="w-full lg:w-1/2 my-10 min-h-72 mx-auto flex items-center justify-center">
       <Line options={options} data={chartData} />
     </div>
   );

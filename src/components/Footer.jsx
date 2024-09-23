@@ -37,7 +37,7 @@ export default function Footer() {
           Twitter
         </li>
       </div>
-      <div>
+      <div className="p-5">
         <h2 className={basicStyle}>Importance note!</h2>
         <p className={basicStyle}>
           Please don't forget that this is an application for testing my skills.

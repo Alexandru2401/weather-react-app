@@ -72,6 +72,7 @@ export default function About() {
       <Info/>
       <WhyUs/>
       <WeatherForecast data={data} city={city} onSubmit={handleSearchCity} />
+      <h2 className="text-2xl text-center">Humidity, pressure and wind details in: <span className="font-bold mt-10">{city}</span></h2>
       <LineChart data={humidityData} />
       <BarChart data={pressureData} />
       <PieChart

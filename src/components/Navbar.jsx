@@ -73,7 +73,7 @@ export default function Navbar() {
       ) : (
         <div>
           <button onClick={handleShowMenu}>
-            <MenuIcon />
+            <MenuIcon style={{ fontSize: "30px" }} />
           </button>
           <div
             className={`fixed top-0 left-0 h-full w-64 bg-slate-400 p-4 transform transition-transform duration-300 ${
@@ -81,7 +81,7 @@ export default function Navbar() {
             }`}
           >
             <button onClick={handleCloseMenu} className="mb-4">
-              <CloseIcon />
+              <CloseIcon style={{ fontSize: "30px" }} />
             </button>
             <ul className="flex flex-col space-y-4">
               <li>

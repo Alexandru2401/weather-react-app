@@ -4,7 +4,7 @@ const minutes = date.getMinutes();
 const dayIndex = date.getDay();
 const months = date.getMonth();
 export const monthDay = date.getDate();
-console.log(monthDay)
+
 export let day;
 switch (dayIndex) {
   case 0:

@@ -78,7 +78,7 @@ export default function Header() {
           </div>
         </section>
       </section>
-      <div className="flex flex-col gap-2 sm:gap-1 my-3 top-1/3 right-3 absolute">
+      <div className="flex flex-col gap-2 sm:gap-1 my-3 top-1/4 right-1 absolute">
         <button className="bg-slate-100 rounded-full p-2" onClick={handleShow}>
           <ShareIcon />
         </button>

@@ -56,7 +56,7 @@ export default function BarChart({ data }) {
   };
 
   return (
-    <div className="w-1/2 min-h-72  mx-auto flex items-center justify-center">
+    <div className="w-full lg:w-1/2 min-h-72  mx-auto flex items-center justify-center my-10">
       <Bar options={options} data={barData} />
     </div>
   );

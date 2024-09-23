@@ -25,7 +25,7 @@ export default function CarouselHome() {
     " radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)";
   
   return (
-    <div className="flex flex-col justifi-center lg:flex-row lg:justify-around my-32">
+    <div className="flex flex-col justifi-center lg:flex-row lg:justify-around my-10 md:my-32">
       <div
         className="w-full md:w-2/3 lg:w-1/3 min-h-[450px] md:min-h-[550px] flex items-center justify-center rounded-3xl relative shadow-md shadow-slate-600 mb-3 mx-auto lg:mx-0"
         style={{ background: bg }}
