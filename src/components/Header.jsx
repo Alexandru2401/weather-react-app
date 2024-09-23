@@ -5,8 +5,15 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
 import ShareIcon from "@mui/icons-material/Share";
+import { useState } from "react";
 
 export default function Header() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  function handleShow() {
+    setIsExpanded((prevState) => !prevState);
+  }
+
   const basicCardStyle =
     "w-[350px] flex flex-col bg-transparent p-3 m-2 text-xl text-slate-100 rounded-md shadow-md shadow-slate-600 backdrop-blur-md";
 
@@ -72,18 +79,34 @@ export default function Header() {
         </section>
       </section>
       <div className="flex flex-col gap-2 sm:gap-1 my-3 top-1/3 right-3 absolute">
-        <span className="bg-slate-100 rounded-full p-2">
+        <button className="bg-slate-100 rounded-full p-2" onClick={handleShow}>
           <ShareIcon />
-        </span>
-        <span className="bg-slate-100 rounded-full p-2">
-          <InstagramIcon />
-        </span>
-        <span className="bg-slate-100 rounded-full p-2">
-          <FacebookIcon />
-        </span>
-        <span className="bg-slate-100 rounded-full p-2">
-          <XIcon />
-        </span>
+        </button>
+        {isExpanded && (
+          <>
+            <Link
+              to="https://www.instagram.com/"
+              target="_blank"
+              className="bg-slate-100 rounded-full p-2"
+            >
+              <InstagramIcon />
+            </Link>
+            <Link
+              to="https://www.facebook.com/"
+              target="_blank"
+              className="bg-slate-100 rounded-full p-2"
+            >
+              <FacebookIcon />
+            </Link>
+            <Link
+              to="https://x.com/"
+              target="_blank"
+              className="bg-slate-100 rounded-full p-2"
+            >
+              <XIcon />
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );

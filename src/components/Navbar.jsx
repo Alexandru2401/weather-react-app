@@ -21,7 +21,7 @@ export default function Navbar() {
         setIsVisible(false);
       } else {
         setIsVisible(true);
-        setShowMenu(false); // Ascunde meniul când ecranul devine mai mare
+        setShowMenu(false);
       }
     }
     window.addEventListener("resize", handleResize);

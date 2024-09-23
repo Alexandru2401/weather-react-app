@@ -42,6 +42,7 @@ export default function CarouselHome() {
         <img
           src={rain}
           className="rounded-full h-96 w-64 object-cover outline-dashed outline-offset-8 outline-blue-400"
+          alt="rain"
         />
       </div>
       <div className="flex items-center bg-slate-200 rounded-xl relative mx-2 md:mx-auto lg:mx-0">
