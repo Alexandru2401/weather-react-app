@@ -17,7 +17,7 @@ export default function Info() {
           </p>
         </Card>
         <Card className={`${cardStyle} z-0 relative p-0 min-h-[350px] mb-16 flex justify-center`}>
-          <img src={bgImg} className="w-full rounded-t-3xl" alt="bg-img" />
+          <img src={bgImg} className="w-full rounded-t-2xl" alt="bg-img" />
           <div className="absolute top-2/4 z-10 bg-slate-300 flex flex-col items-center p-3 rounded-tl-[80px] rounded-tr-[80px] rounded-b-3xl shadow-md shadow-slate-700">
             <h2 className="text-xl mb-2">5-Day Forecast</h2>
             <p>
@@ -29,7 +29,7 @@ export default function Info() {
         </Card>
 
         <Card className={cardStyle}>
-          <h2 className="text-2xl mb-2 border-b-2 border-red-400">Detailed Data</h2>
+          <h2 className="text-xl mb-2 border-b-2 border-red-400">Detailed Data</h2>
           <p className="text-lg">
             Get comprehensive information about the weather in your area,
             including wind, atmospheric pressure, and humidity. Our application

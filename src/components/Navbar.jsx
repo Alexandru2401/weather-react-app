@@ -11,10 +11,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useEffect, useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({ isDarkMode, toggleDarkMode }) {
   const [showMenu, setShowMenu] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth <= 800) {
@@ -56,18 +55,14 @@ export default function Navbar() {
             <div>
               {formattedHours}:{formattedMinutes}
             </div>
-            <Button className="bg-slate-700">Dark mode</Button>
+
             <div>
               {day}, {monthDay} {currentMonths}
             </div>
-            <ul>
-              <Link to="/signin" className="m-2">
-                <Button className="bg-slate-900">Sign in</Button>
-              </Link>
-              <Link to="/signin">
-                <Button className="bg-slate-300">Sign in</Button>
-              </Link>
-            </ul>
+            <Button className="bg-slate-700" onClick={toggleDarkMode}>
+                  {" "}
+                  {isDarkMode ? "Light Mode" : "Dark Mode"}
+                </Button>
           </div>
         </>
       ) : (
@@ -95,17 +90,10 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Button className="bg-slate-700">Dark mode</Button>
-              </li>
-              <li>
-                <Link to="/signin">
-                  <Button className="bg-slate-900">Sign in</Button>
-                </Link>
-              </li>
-              <li>
-                <Link to="/signin">
-                  <Button className="bg-slate-300">Sign in</Button>
-                </Link>
+                <Button className="bg-slate-700" onClick={toggleDarkMode}>
+                  {" "}
+                  {isDarkMode ? "Light Mode" : "Dark Mode"}
+                </Button>
               </li>
             </ul>
           </div>

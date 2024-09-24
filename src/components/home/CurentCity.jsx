@@ -64,7 +64,7 @@ export default function CurrentCity() {
     " linear-gradient(22deg, rgba(142,215,247,1) 1%, rgba(219,219,231,1) 50%, rgba(156,188,235,1) 100%)";
   return (
     <section className="flex flex-col items-center">
-      <h2 className="mt-10 mb-5 text-center text-5xl font-semibold  text-transparent bg-gradient-to-r from-slate-300 via-gray-700 to-black bg-clip-text py-3">
+      <h2 className="mt-10 mb-5 text-center text-5xl font-semibold  text-transparent bg-gradient-to-r from-slate-700 via-blue-700 to-cyan-700 bg-clip-text py-3">
         Current City: {city}
       </h2>
       <form
