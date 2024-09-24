@@ -6,9 +6,10 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import PlaceIcon from "@mui/icons-material/Place";
 import AirIcon from "@mui/icons-material/Air";
-
+import { useTheme } from "../store/themeContext";
 export default function CarouselHome() {
   const [index, setIndex] = useState(0);
+  const {isDark} = useTheme();
 
   function handleNext() {
     setIndex((prevIndex) => (prevIndex + 1) % items.length);
@@ -45,27 +46,27 @@ export default function CarouselHome() {
           alt="rain"
         />
       </div>
-      <div className="flex items-center bg-slate-200 rounded-xl relative mx-2 md:mx-auto lg:mx-0">
+      <div className={`flex items-center rounded-xl relative mx-2 md:mx-auto lg:mx-0 ${isDark ? 'bg-slate-200':"bg-slate-950"}`}>
         <button onClick={handlePrev}>
-          <ArrowBackIosIcon />
+          <ArrowBackIosIcon className={`${isDark ? "text-slate-950" : "text-slate-100"}`} />
         </button>
 
-        <Card className="w-80 relative mb-7 lg:mb-0 min-h-[400px]">
+        <Card className={`w-80 relative mb-7 lg:mb-0 min-h-[400px] ${isDark ? "text-slate-950" : "text-slate-100"}`}>
           {item.content}
         </Card>
 
         <button onClick={handleNext}>
-          <ArrowForwardIosIcon />
+          <ArrowForwardIosIcon className={`${isDark ? "text-slate-950" : "text-slate-100"}`}/>
         </button>
 
         <span
-          className={`dots1 ${index === 0 ? "bg-white" : "bg-black"}`}
+          className={`dots1 ${index === 0 ? "bg-white" : "bg-cyan-500"}`}
         ></span>
         <span
-          className={`dots2 ${index === 1 ? "bg-white" : "bg-black"}`}
+          className={`dots2 ${index === 1 ? "bg-white" : "bg-cyan-500"}`}
         ></span>
         <span
-          className={`dots3 ${index === 2 ? "bg-white" : "bg-black"}`}
+          className={`dots3 ${index === 2 ? "bg-white" : "bg-cyan-500"}`}
         ></span>
       </div>
     </div>

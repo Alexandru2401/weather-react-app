@@ -16,8 +16,9 @@ import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import DescriptionIcon from "@mui/icons-material/Description";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "../UI/Button";
-
+import { useTheme } from "../store/themeContext"
 export default function CurrentCity() {
+  const {isDark} = useTheme();
   const KEY = process.env.REACT_APP_API_KEY;
   const [data, setData] = useState([]);
   const [city, setCity] = useState("Bucharest");
@@ -64,7 +65,7 @@ export default function CurrentCity() {
     " linear-gradient(22deg, rgba(142,215,247,1) 1%, rgba(219,219,231,1) 50%, rgba(156,188,235,1) 100%)";
   return (
     <section className="flex flex-col items-center">
-      <h2 className="mt-10 mb-5 text-center text-5xl font-semibold  text-transparent bg-gradient-to-r from-slate-700 via-blue-700 to-cyan-700 bg-clip-text py-3">
+      <h2 className={`mt-10 mb-5 text-center text-5xl font-semibold text-transparent ${isDark ? "bg-gradient-to-r from-slate-700 via-blue-700 to-cyan-700":"bg-gradient-to-r from-slate-100 via-blue-700 to-cyan-300"} bg-clip-text py-3`}>
         Current City: {city}
       </h2>
       <form
@@ -80,7 +81,7 @@ export default function CurrentCity() {
           value={searchCity}
         />
         <button className="mx-2">
-          <SearchIcon />
+          <SearchIcon className={`${isDark ? "text-slate-950": "text-slate-100"}`}/>
         </button>
       </form>
       <div
@@ -123,7 +124,7 @@ export default function CurrentCity() {
         </div>
       </div>
       <Link to="/about" className="my-5">
-        <Button className="bg-slate-900">
+        <Button className={`${isDark ? "bg-slate-900":"bg-slate-100 text-slate-950"}`}>
           See weather forecast for next 5 days!
         </Button>
       </Link>
@@ -131,4 +132,3 @@ export default function CurrentCity() {
   );
 }
 
-// Here will be displayed information about current city
