@@ -6,21 +6,31 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
 import ShareIcon from "@mui/icons-material/Share";
 import { useState } from "react";
-
+import { useTheme } from "../components/store/themeContext";
 export default function Header() {
   const [isExpanded, setIsExpanded] = useState(false);
-
+  const { isDark } = useTheme();
   function handleShow() {
     setIsExpanded((prevState) => !prevState);
   }
 
-  const basicCardStyle = 
+  const basicCardStyle =
     "w-[350px] flex flex-col bg-transparent p-3 m-2 text-xl text-slate-50 shadow-md shadow-slate-600 backdrop-blur-md border-2 border-slate-900 rounded-2xl";
-  const paragraphStyle = "sm:mb-1 md:mb-5 md:text-lg xl:text-2xl text-slate-50"
+  const paragraphStyle = "sm:mb-1 md:mb-5 md:text-lg xl:text-2xl text-slate-50";
   return (
-    <header className="relative min-h-[80vh] flex flex-col w-full justify-around bg-bgImg bg-no-repeat bg-top bg-cover rounded-b-3xl">
+    <header
+      className={`relative min-h-[80vh] flex flex-col w-full justify-around bg-no-repeat bg-top bg-cover rounded-b-3xl ${
+        isDark ? "bg-bgImg" : "bg-bgDark"
+      }`}
+    >
       <div className="flex mx-auto">
-        <h1 className="m-2 lg:my-4 font-semibold  text-transparent bg-gradient-to-r from-slate-700 via-gray-700 to-black bg-clip-text py-3 text-4xl lg:text-5xl xl:text-7xl md:my-10">
+        <h1
+          className={`m-2 lg:my-4 font-semibold  text-transparent bg-clip-text py-3 text-4xl lg:text-5xl xl:text-7xl md:my-10 ${
+            isDark
+              ? "bg-gradient-to-r from-slate-700 via-gray-700 to-black"
+              : "bg-gradient-to-r from-slate-200 via-gray-500 to-zinc-400"
+          }`}
+        >
           See wheather in your city!
         </h1>
       </div>
@@ -34,7 +44,7 @@ export default function Header() {
           </div>
           <div>
             <Button className="bg-slate-400 w-44 shadow-md shadow-slate-800 text-slate-50">
-              <Link to="/about"> 
+              <Link to="/about">
                 Get started! <ArrowForwardIcon />
               </Link>
             </Button>
@@ -43,12 +53,8 @@ export default function Header() {
             <p className="sm:mb-1 md:mb-5 text-3xl xl:text-7xl text-slate-50">
               40&deg; C
             </p>
-            <p className={paragraphStyle}>
-              Real feel: 40&deg; C
-            </p>
-            <p className={paragraphStyle}>
-              Weather today: sunny
-            </p>
+            <p className={paragraphStyle}>Real feel: 40&deg; C</p>
+            <p className={paragraphStyle}>Weather today: sunny</p>
             <p className={paragraphStyle}>
               Wind: <span>20km/h</span>
             </p>
