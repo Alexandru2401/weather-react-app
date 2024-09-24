@@ -3,8 +3,7 @@ import ThermostatIcon from "@mui/icons-material/Thermostat";
 import AirIcon from "@mui/icons-material/Air";
 import DescriptionIcon from "@mui/icons-material/Description";
 import SearchIcon from "@mui/icons-material/Search";
-
-export default function WeatherForecast({ data, city, onSubmit }) {
+export default function WeatherForecast({ data, city, onSubmit, isDark }) {
   const { list } = data;
   const [searchCity, setSearchCity] = useState("");
 
@@ -41,7 +40,7 @@ export default function WeatherForecast({ data, city, onSubmit }) {
 
   return (
     <section className="flex flex-col items-center">
-      <h2 className="mt-10 mb-5 text-center text-5xl font-semibold text-transparent bg-gradient-to-r from-slate-300 via-gray-700 to-black bg-clip-text py-3">
+      <h2 className={`mt-10 mb-5 text-center text-5xl font-semibold text-transparent ${isDark ? "bg-gradient-to-r from-slate-300 via-gray-700 to-black": "bg-gradient-to-r from-slate-300 via-gray-500 to-zinc-300"} bg-clip-text py-3`}>
         Current City: {city}
       </h2>
       <form

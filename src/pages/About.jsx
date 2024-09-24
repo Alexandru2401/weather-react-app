@@ -5,10 +5,12 @@ import BarChart from "../components/about/BarChart";
 import PieChart from "../components/about/PieChart";
 import WhyUs from "../components/about/WhyUs";
 import Info from "../components/about/Info";
+import { useTheme } from "../components/store/themeContext";
 export default function About() {
   const KEY = process.env.REACT_APP_API_KEY;
   const [data, setData] = useState([]);
   const [city, setCity] = useState("Bucharest");
+  const {isDark} = useTheme();
 
   useEffect(() => {
     fetch(
@@ -69,12 +71,12 @@ export default function About() {
 
   return (
     <div className="w-10/12 m-auto">
-      <Info/>
-      <WhyUs/>
+      <Info isDark={isDark}/>
+      <WhyUs isDark={isDark}/>
       <WeatherForecast data={data} city={city} onSubmit={handleSearchCity} />
-      <h2 className="text-2xl text-center">Humidity, pressure and wind details in: <span className="font-bold mt-10">{city}</span></h2>
-      <LineChart data={humidityData} />
-      <BarChart data={pressureData} />
+      <h2 className={`text-2xl text-center ${isDark ? "text-slate-950" : "text-slate-100"}`}>Humidity, pressure and wind details in: <span className="font-bold mt-10">{city}</span></h2>
+      <LineChart data={humidityData} isDark={isDark} />
+      <BarChart data={pressureData} isDark={isDark}/>
       <PieChart
         medianWindSpeed={medianWindSpeed}
         medianWindDegree={medianWindDegree}

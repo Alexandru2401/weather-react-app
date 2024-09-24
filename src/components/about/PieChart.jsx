@@ -21,11 +21,11 @@ export default function PieChart({
         data: [medianWindDegree, medianWindSpeed, medianWindGust],
         hoverOffset: 4,
         backgroundColor: [
-            "rgb(253 186 116)",
-            "rgb(190 18 60)",
-            "rgb(34 211 238)",
+          "rgb(253 186 116)",
+          "rgb(190 18 60)",
+          "rgb(34 211 238)",
         ],
-        borderColor:"#000",
+        borderColor: "#000",
         borderWidth: 1,
         fill: true,
       },
@@ -48,7 +48,7 @@ export default function PieChart({
   };
 
   return (
-    <div className="w-full lg:w-1/2 my-10 mx-auto h-72 flex items-center justify-center">
+    <div className="w-full lg:w-1/2 my-10 mx-auto h-72 flex items-center justify-center  bg-slate-200 p-3 rounded-2xl">
       <Pie options={options} data={pieData} />
     </div>
   );

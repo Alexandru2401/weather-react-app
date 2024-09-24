@@ -8,7 +8,7 @@ import {
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
 } from "chart.js";
 
 Chartjs.register(
@@ -27,7 +27,7 @@ export default function LineChart({ data }) {
   const labels = data.map((_, index) => index + 1);
 
   const chartData = {
-    labels: labels, 
+    labels: labels,
     datasets: [
       {
         label: "Humidity",
@@ -46,17 +46,17 @@ export default function LineChart({ data }) {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'top',
+        position: "top",
       },
       title: {
         display: true,
-        text: 'Humidity Levels in the last 5 days',
+        text: "Humidity Levels in the last 5 days",
       },
     },
   };
 
   return (
-    <div className="w-full lg:w-1/2 my-10 min-h-72 mx-auto flex items-center justify-center">
+    <div className="w-full lg:w-1/2 my-10 min-h-72 mx-auto flex items-center justify-center bg-slate-200 p-3 rounded-2xl">
       <Line options={options} data={chartData} />
     </div>
   );

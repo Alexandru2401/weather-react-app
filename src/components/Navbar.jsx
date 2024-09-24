@@ -41,7 +41,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className={`p-4 sticky top-0 z-10 font-semibold text-lg ${isDark ? 'bg-slate-700 text-slate-200' : 'bg-slate-400 text-slate-800'}`}>
+    <nav className={`p-4 sticky top-0 z-10 font-semibold text-lg ${isDark ? 'bg-slate-900 text-slate-200' : 'bg-slate-200 text-slate-800'}`}>
       {isVisible ? (
         <div className="flex items-center justify-between">
           <div>Weather Forecast</div>

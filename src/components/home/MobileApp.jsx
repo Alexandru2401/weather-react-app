@@ -8,22 +8,23 @@ import AppleIcon from "@mui/icons-material/Apple";
 import AndroidIcon from "@mui/icons-material/Android";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useTheme } from "../store/themeContext";
 export default function MobileApp() {
   const [isExpanded, setIsExpanded] = useState(false);
-
+  const {isDark} = useTheme();
   function handleShow() {
     setIsExpanded((prevState) => !prevState);
   }
 
   const spanStyle =
-    "shadow-2xl p-1 lg:p-3 text-md rounded-2xl backdrop-blur-lg  absolute lg:text-xl text-slate-700 shadow-md";
+    `shadow-2xl p-1 lg:p-3 text-md rounded-2xl backdrop-blur-lg  absolute lg:text-xl ${isDark ? "text-slate-700":"text-slate-100 border-2 border-slate-100"} shadow-md`;
   const shadow = "shadow-md shadow-slate-700";
   return (
     <section className="flex flex-col justify-center items-center relative ">
-      <h2 className="text-2xl lg:text-5xl font-semibold my-10 text-slate-950">
+      <h2 className={`text-2xl lg:text-5xl font-semibold my-10 ${isDark ? "text-slate-950":"text-slate-100"}`}>
         Weather forecast in your pocket!
       </h2>
-      <div className="w-full md:w-2/3 lg:w-2/4 min-h-[500px] lg:min-h-[700px] flex items-center justify-center rounded-full shadow-sm border-dashed border-black border-2 mb-10 md:mb-20 lg:my-9 relative">
+      <div className={`w-full md:w-2/3 lg:w-2/4 min-h-[500px] lg:min-h-[700px] flex items-center justify-center rounded-full shadow-sm border-dashed ${isDark ? "border-black border-2":"border-2 border-slate-100"} mb-10 md:mb-20 lg:my-9 relative`}>
         <div className={`${spanStyle} ${shadow} -top-5`}>
           <h3>Get Weather Alerts Fast</h3>
           <p>Be Prepared for Anything with Instant Notifications!</p>

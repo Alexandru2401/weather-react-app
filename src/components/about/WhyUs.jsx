@@ -1,11 +1,13 @@
 import Card from "../UI/Card";
+import { useTheme } from "../store/themeContext"
 export default function WhyUs() {
+  const {isDark} = useTheme();
   const cardStyle =
-    "rounded-2xl shadow-md shadow-slate-700 border-t-2 border-cyan-700";
+    `rounded-2xl shadow-md shadow-slate-700 border-t-2 border-cyan-700 ${isDark ? "text-slate-950":"text-slate-100 shadow-slate-100"}`;
 
   return (
     <>
-      <h2 className="text-center my-10 text-5xl">Why us?</h2>
+      <h2 className={`text-center my-10 text-5xl ${isDark ? "text-slate-950":"text-slate-100"}`}>Why us?</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center sm:my-6 md:my-16">
         <Card className={cardStyle}>
           <h3 className="text-2xl mb-3 border-b-2 border-slate-700">

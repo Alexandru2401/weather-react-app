@@ -18,7 +18,7 @@ Chartjs.register(
   Legend
 );
 
-export default function BarChart({ data }) {
+export default function BarChart({ data, isDark }) {
   const labels = [1, 2, 3, 4, 5];
   const barData = {
     labels: labels,
@@ -56,7 +56,7 @@ export default function BarChart({ data }) {
   };
 
   return (
-    <div className="w-full lg:w-1/2 min-h-72  mx-auto flex items-center justify-center my-10">
+    <div className="w-full lg:w-1/2 min-h-72  mx-auto flex items-center justify-center my-10 bg-slate-200 p-3 rounded-2xl">
       <Bar options={options} data={barData} />
     </div>
   );
