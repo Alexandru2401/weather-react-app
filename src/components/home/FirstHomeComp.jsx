@@ -5,23 +5,25 @@ import Button from "../UI/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ThunderstormIcon from "@mui/icons-material/Thunderstorm";
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import { useTheme } from "../store/themeContext";
 export default function FirstHomeComp() {
+  const {isDark} = useTheme();
   const cardStyle = "max-w-60 rounded-2xl shadow-md shadow-slate-700";
 
   return (
     <div className="flex align-center justify-center flex-col my-5 md:my-20 relative">
-      <h2 className="text-2xl sm:text-3xl lg:text-5xl font-semibold mx-auto my-3 dark:text-slate-100 ">
+      <h2 className={`text-2xl sm:text-3xl lg:text-5xl font-semibold mx-auto my-3 ${ isDark ? 'text-slate-950':"text-slate-100"}`}>
         Weather can be <br/>
         <span className="mx-2">
           unpredictable
           <ThunderstormIcon style={{ fontSize: "35px" }} className="mx-2" />
         </span>
       </h2>
-      <p className="sm:text-xl lg:text-2xl mx-auto mb-3 dark:text-slate-100 ">
+      <p className={`sm:text-xl lg:text-2xl mx-auto mb-3 ${ isDark ? 'text-slate-950':"text-slate-100"}`}>
         Be one step ahead of it!
       </p>
       <Link to="/about" className="mx-auto">
-        <Button className="bg-slate-400 w-44 shadow-md shadow-slate-800 mb-5">
+        <Button className={`bg-slate-400 w-44 mb-5 ${isDark ? "shadow-slate-500 shadow-md":"shadow-slate-100 shadow-sm" }`}>
           Explore benefits <ArrowForwardIcon />
         </Button>
       </Link>

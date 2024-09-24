@@ -4,21 +4,25 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Footer from "./components/Footer";
-import { useState } from "react";
-function App() {
-  const [isDark, setIsDark] = useState(false);
+import { ThemeProvider, useTheme } from "./components/store/themeContext";
 
-  function toggleDarkMode() {
-    setIsDark((prevMode) => !prevMode);
-    console.log("click")
-  }
+function App() {
+  return (
+    <ThemeProvider>
+      <Main />
+    </ThemeProvider>
+  );
+}
+
+function Main() {
+  const { isDark } = useTheme(); 
   return (
     <Router>
       <div className={`App ${isDark ? 'bg-slate-200' : 'dark:bg-slate-950'}`}>
-        <Navbar isDarkMode={isDark} toggleDarkMode={toggleDarkMode}/>
+        <Navbar />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/about" element={<About />}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
       </div>
