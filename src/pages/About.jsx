@@ -8,7 +8,7 @@ import Info from "../components/about/Info";
 import { useTheme } from "../components/store/themeContext";
 import Error from "../components/UI/Error";
 
-export default function About() {
+function About() {
   const KEY = process.env.REACT_APP_API_KEY;
   const [data, setData] = useState([]);
   const [city, setCity] = useState("Bucharest");
@@ -121,3 +121,5 @@ export default function About() {
     </div>
   );
 }
+
+export default About;

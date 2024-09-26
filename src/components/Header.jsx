@@ -19,8 +19,8 @@ export default function Header() {
   const paragraphStyle = "sm:mb-1 md:mb-5 md:text-lg xl:text-2xl text-slate-50";
   return (
     <header
-      className={`relative min-h-[80vh] flex flex-col w-full justify-around bg-no-repeat bg-top bg-cover rounded-b-3xl ${
-        isDark ? "bg-bgImg" : "bg-bgDark"
+      className={`relative min-h-[80vh] flex flex-col w-full justify-around bg-no-repeat bg-bottom bg-cover rounded-b-3xl ${
+        isDark ? "bg-bgImg" : "bg-bgDark bg-top"
       }`}
     >
       <div className="flex mx-auto">

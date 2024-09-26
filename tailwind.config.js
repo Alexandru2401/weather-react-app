@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        bgImg: "url('/src/assets/bg-img.jpg')",
+        bgImg: "url('/src/assets/bg-2.jpeg')",
         cardImg: "url('/src/assets/bg-3.jpg')",
-        bgDark: "url('/src/assets/bg-dark.jpg')",
+        bgDark: "url('/src/assets/bg-dark-4.jpeg')",
       },
     },
   },

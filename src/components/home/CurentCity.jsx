@@ -5,7 +5,7 @@ import {
   day,
   formattedMinutes,
   currentMonths,
-  monthDay
+  monthDay,
 } from "../../utils/currentDate";
 import PlaceIcon from "@mui/icons-material/Place";
 import TodayIcon from "@mui/icons-material/Today";
@@ -16,22 +16,42 @@ import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import DescriptionIcon from "@mui/icons-material/Description";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "../UI/Button";
-import { useTheme } from "../store/themeContext"
+import { useTheme } from "../store/themeContext";
+import Error from "../UI/Error";
 export default function CurrentCity() {
-  const {isDark} = useTheme();
+  const { isDark } = useTheme();
   const KEY = process.env.REACT_APP_API_KEY;
   const [data, setData] = useState([]);
   const [city, setCity] = useState("Bucharest");
   const [searchCity, setSearchCity] = useState("");
+  const [isFetching, setIsFetching] = useState(false);
+  const [error, setError] = useState();
+
   useEffect(() => {
     if (city) {
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lang=en&q=${city}&appid=${KEY}`
-      )
-        .then((response) => response.json())
-        .then((data) => setData(data));
+      async function fetchData() {
+        setIsFetching(true);
+        try {
+          const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lang=en&q=${city}&appid=${KEY}`
+          );
+          const respData = await response.json();
+          if (!response.ok) {
+            throw new Error("Something went wrong!");
+          }
+          setData(respData);
+        } catch (error) {
+          setError({ message: error.message || "Something went wrong!" });
+        }
+        setIsFetching(false);
+      }
+      fetchData();
     }
   }, [city, KEY]);
+
+  if (error) {
+    return <Error title="Something went wrong!" message={error.message} />;
+  }
 
   // Extract the properties that i need
   const { main, weather, wind } = data;
@@ -65,7 +85,13 @@ export default function CurrentCity() {
     " linear-gradient(22deg, rgba(142,215,247,1) 1%, rgba(219,219,231,1) 50%, rgba(156,188,235,1) 100%)";
   return (
     <section className="flex flex-col items-center">
-      <h2 className={`mt-10 mb-5 text-center text-5xl font-semibold text-transparent ${isDark ? "bg-gradient-to-r from-slate-700 via-blue-700 to-cyan-700":"bg-gradient-to-r from-slate-100 via-blue-700 to-cyan-300"} bg-clip-text py-3`}>
+      <h2
+        className={`mt-10 mb-5 text-center text-5xl font-semibold text-transparent ${
+          isDark
+            ? "bg-gradient-to-r from-slate-700 via-blue-700 to-cyan-700"
+            : "bg-gradient-to-r from-slate-100 via-blue-700 to-cyan-300"
+        } bg-clip-text py-3`}
+      >
         Current City: {city}
       </h2>
       <form
@@ -81,54 +107,64 @@ export default function CurrentCity() {
           value={searchCity}
         />
         <button className="mx-2">
-          <SearchIcon className={`${isDark ? "text-slate-950": "text-slate-100"}`}/>
+          <SearchIcon
+            className={`${isDark ? "text-slate-950" : "text-slate-100"}`}
+          />
         </button>
       </form>
-      <div
-        style={{ background: bg }}
-        className="w-full md:w-3/4 my-4 p-3 flex items-center justify-around shadow-md shadow-slate-600 rounded-2xl gap-4"
-      >
-        <div>
-          <h3 className="text-xl md:text-4xl text-slate-900 my-4 shadow-2xl p-1 md:p-3 rounded-2xl backdrop-blur-lg">
-            <PlaceIcon /> City: {city}
-          </h3>
-          <p className={basicStyle}>
-            <TodayIcon /> Date: {day}, {monthDay} {currentMonths}
-          </p>
-          <p className={basicStyle}>
-            <AccessTimeIcon />
-            {formattedHours}:{formattedMinutes}
-          </p>
-          <p className={basicStyle}>
-            <ThermostatIcon />
-            {celsiusTemperature}&deg; C
-          </p>
-          <p className={basicStyle}>Max temp: {celsiusMaxTemp}&deg; </p>
-          <p className={basicStyle}>Min temp: {celsiusMinTemp}&deg;</p>
+      {isFetching && (
+        <p className="text-center text-slate-900 text-2xl">The data is fetching...</p>
+      )}
+      {!isFetching && (
+        <div
+          style={{ background: bg }}
+          className="w-full md:w-3/4 my-4 p-3 flex items-center justify-around shadow-md shadow-slate-600 rounded-2xl gap-4"
+        >
+          <div>
+            <h3 className="text-xl md:text-4xl text-slate-900 my-4 shadow-2xl p-1 md:p-3 rounded-2xl backdrop-blur-lg">
+              <PlaceIcon /> City: {city}
+            </h3>
+            <p className={basicStyle}>
+              <TodayIcon /> Date: {day}, {monthDay} {currentMonths}
+            </p>
+            <p className={basicStyle}>
+              <AccessTimeIcon />
+              {formattedHours}:{formattedMinutes}
+            </p>
+            <p className={basicStyle}>
+              <ThermostatIcon />
+              {celsiusTemperature}&deg; C
+            </p>
+            <p className={basicStyle}>Max temp: {celsiusMaxTemp}&deg; </p>
+            <p className={basicStyle}>Min temp: {celsiusMinTemp}&deg;</p>
+          </div>
+          <div>
+            <p className={basicStyle}>Real feel:{realFeel}&deg; C</p>
+            <p className={basicStyle}>
+              <DescriptionIcon />
+              Description: {description}
+            </p>
+            <img src={iconUrl} alt="" />
+            <p className={basicStyle}>
+              <AirIcon />
+              Wind: {windSpeed}km/h
+            </p>
+            <p className={basicStyle}>
+              <WaterDropIcon />
+              Humidity: {humidity}
+            </p>
+          </div>
         </div>
-        <div>
-          <p className={basicStyle}>Real feel:{realFeel}&deg; C</p>
-          <p className={basicStyle}>
-            <DescriptionIcon />
-            Description: {description}
-          </p>
-          <img src={iconUrl} alt="" />
-          <p className={basicStyle}>
-            <AirIcon />
-            Wind: {windSpeed}km/h
-          </p>
-          <p className={basicStyle}>
-            <WaterDropIcon />
-            Humidity: {humidity}
-          </p>
-        </div>
-      </div>
+      )}
       <Link to="/about" className="my-5">
-        <Button className={`${isDark ? "bg-slate-900":"bg-slate-100 text-slate-950"}`}>
+        <Button
+          className={`${
+            isDark ? "bg-slate-900" : "bg-slate-100 text-slate-950"
+          }`}
+        >
           See weather forecast for next 5 days!
         </Button>
       </Link>
     </section>
   );
 }
-
