@@ -10,14 +10,22 @@ export default function About() {
   const KEY = process.env.REACT_APP_API_KEY;
   const [data, setData] = useState([]);
   const [city, setCity] = useState("Bucharest");
-  const {isDark} = useTheme();
+  const [isFetching, setIsFetching] = useState(false);
+  const { isDark } = useTheme();
 
   useEffect(() => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=en&units=metric&appid=${KEY}`
-    )
-      .then((response) => response.json())
-      .then((data) => setData(data));
+    async function fetchCity() {
+      setIsFetching(true);
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=en&units=metric&appid=${KEY}`
+      );
+
+      const responseCity = await response.json();
+      setData(responseCity);
+      setIsFetching(false);
+    }
+
+    fetchCity();
   }, [city, KEY]);
 
   // Extract all humidity data
@@ -71,12 +79,26 @@ export default function About() {
 
   return (
     <div className="w-10/12 m-auto">
-      <Info isDark={isDark}/>
-      <WhyUs isDark={isDark}/>
-      <WeatherForecast data={data} city={city} onSubmit={handleSearchCity} />
-      <h2 className={`text-2xl text-center ${isDark ? "text-slate-950" : "text-slate-100"}`}>Humidity, pressure and wind details in: <span className="font-bold mt-10">{city}</span></h2>
+      <Info isDark={isDark} />
+      <WhyUs isDark={isDark} />
+      <WeatherForecast
+        data={data}
+        city={city}
+        onSubmit={handleSearchCity}
+        fallback="No data available"
+        loadingText="Fetching data..."
+        isLoading={isFetching}
+      />
+      <h2
+        className={`text-2xl text-center ${
+          isDark ? "text-slate-950" : "text-slate-100"
+        }`}
+      >
+        Humidity, pressure and wind details in:{" "}
+        <span className="font-bold mt-10">{city}</span>
+      </h2>
       <LineChart data={humidityData} isDark={isDark} />
-      <BarChart data={pressureData} isDark={isDark}/>
+      <BarChart data={pressureData} isDark={isDark} />
       <PieChart
         medianWindSpeed={medianWindSpeed}
         medianWindDegree={medianWindDegree}
