@@ -27,10 +27,11 @@ export default function About() {
         const responseCity = await response.json();
 
         if (!response.ok) {
+          throw new Error("Something went wrong!");
         }
         setData(responseCity);
       } catch (error) {
-        setError(error);
+        setError({ message: error.message || "Something went wrong!" });
       }
       setIsFetching(false);
     }
@@ -39,7 +40,7 @@ export default function About() {
   }, [city, KEY]);
 
   if (error) {
-    return <Error />;
+    return <Error title="Something went wrong!" message={error.message} />;
   }
   // Extract all humidity data
   const allHumidityData = data.list
