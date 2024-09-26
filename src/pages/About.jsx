@@ -6,28 +6,41 @@ import PieChart from "../components/about/PieChart";
 import WhyUs from "../components/about/WhyUs";
 import Info from "../components/about/Info";
 import { useTheme } from "../components/store/themeContext";
+import Error from "../components/UI/Error";
+
 export default function About() {
   const KEY = process.env.REACT_APP_API_KEY;
   const [data, setData] = useState([]);
   const [city, setCity] = useState("Bucharest");
   const [isFetching, setIsFetching] = useState(false);
+  const [error, setError] = useState();
   const { isDark } = useTheme();
 
   useEffect(() => {
     async function fetchCity() {
       setIsFetching(true);
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=en&units=metric&appid=${KEY}`
-      );
 
-      const responseCity = await response.json();
-      setData(responseCity);
+      try {
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=en&units=metric&appid=${KEY}`
+        );
+        const responseCity = await response.json();
+
+        if (!response.ok) {
+        }
+        setData(responseCity);
+      } catch (error) {
+        setError(error);
+      }
       setIsFetching(false);
     }
 
     fetchCity();
   }, [city, KEY]);
 
+  if (error) {
+    return <Error />;
+  }
   // Extract all humidity data
   const allHumidityData = data.list
     ? data.list.map((item) => ({
