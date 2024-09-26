@@ -7,6 +7,7 @@ import XIcon from "@mui/icons-material/X";
 import ShareIcon from "@mui/icons-material/Share";
 import { useState } from "react";
 import { useTheme } from "../components/store/themeContext";
+
 export default function Header() {
   const [isExpanded, setIsExpanded] = useState(false);
   const { isDark } = useTheme();
@@ -28,7 +29,7 @@ export default function Header() {
           className={`m-2 lg:my-4 font-semibold  text-transparent bg-clip-text py-3 text-4xl lg:text-5xl xl:text-7xl md:my-10 ${
             isDark
               ? "bg-gradient-to-r from-slate-700 via-gray-700 to-black"
-              : "bg-gradient-to-r from-slate-200 via-gray-500 to-zinc-400"
+              : "bg-gradient-to-r from-slate-200 via-gray-300 to-zinc-400"
           }`}
         >
           See wheather in your city!

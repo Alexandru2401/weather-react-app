@@ -48,7 +48,6 @@ function About() {
         humidity: item.main.humidity,
       }))
     : [];
-
   // Extract latest 5 days humidity data
   const humidityData = allHumidityData.slice(35, 40);
 

@@ -5,7 +5,8 @@ import XIcon from "@mui/icons-material/X";
 
 export default function Footer() {
   const basicStyle = "text-md lg:xl text-slate-200 xl:font-semibold mb-3";
-  const linkStyle = "text-gray-950 underline decoration-1 list-none text-lg font-semibold"
+  const linkStyle =
+    "text-gray-950 underline decoration-1 list-none text-lg font-semibold";
   return (
     <footer className="bg-slate-400 py-5 flex flex-col justify-center items-center lg:flex-row lg:justify-around mt-10 rounded-t-3xl gap-5">
       <div>
@@ -24,18 +25,24 @@ export default function Footer() {
       </div>
       <div>
         <h2 className={basicStyle}>Follow us on:</h2>
-        <li className={linkStyle}>
-          <FacebookIcon className="mx-1"/>
-          Facebook
-        </li>
-        <li className={linkStyle}>
-          <InstagramIcon className="mx-1"/>
-          Instagram
-        </li>
-        <li className={linkStyle}>
-          <XIcon className="mx-1" />
-          Twitter
-        </li>
+        <Link>
+          <li className={linkStyle}>
+            <FacebookIcon className="mx-1" />
+            Facebook
+          </li>
+        </Link>
+        <Link>
+          <li className={linkStyle}>
+            <InstagramIcon className="mx-1" />
+            Instagram
+          </li>
+        </Link>
+        <Link>
+          <li className={linkStyle}>
+            <XIcon className="mx-1" />
+            Twitter
+          </li>
+        </Link>
       </div>
       <div className="p-5">
         <h2 className={basicStyle}>Importance note!</h2>

@@ -46,6 +46,7 @@ export default function CurrentCity() {
         setIsFetching(false);
       }
       fetchData();
+      console.log(data)
     }
   }, [city, KEY]);
 
@@ -69,7 +70,7 @@ export default function CurrentCity() {
   const realFeel = Math.round(parseInt(feels) - 273.15);
   const celsiusMaxTemp = Math.round(parseInt(tempMax) - 273.15);
   const celsiusMinTemp = Math.round(parseInt(tempMin) - 273.15);
-  const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  const iconUrl = icon ? `http://openweathermap.org/img/wn/${icon}@2x.png` : "img";
 
   function handleSearchCity(e) {
     e.preventDefault();
