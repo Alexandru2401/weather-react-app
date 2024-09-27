@@ -18,6 +18,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import Button from "../UI/Button";
 import { useTheme } from "../store/themeContext";
 import Error from "../UI/Error";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 export default function CurrentCity() {
   const { isDark } = useTheme();
   const KEY = process.env.REACT_APP_API_KEY;
@@ -26,6 +28,36 @@ export default function CurrentCity() {
   const [searchCity, setSearchCity] = useState("");
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState();
+
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+
+  const [ref1, inView1] = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+
+  const [ref2, inView2] = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+
+  const [ref3, inView3] = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+
+  const [ref4, inView4] = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+
+  const [ref5, inView5] = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
 
   useEffect(() => {
     if (city) {
@@ -46,7 +78,7 @@ export default function CurrentCity() {
         setIsFetching(false);
       }
       fetchData();
-      console.log(data)
+      console.log(data);
     }
   }, [city, KEY]);
 
@@ -70,7 +102,9 @@ export default function CurrentCity() {
   const realFeel = Math.round(parseInt(feels) - 273.15);
   const celsiusMaxTemp = Math.round(parseInt(tempMax) - 273.15);
   const celsiusMinTemp = Math.round(parseInt(tempMin) - 273.15);
-  const iconUrl = icon ? `http://openweathermap.org/img/wn/${icon}@2x.png` : "img";
+  const iconUrl = icon
+    ? `http://openweathermap.org/img/wn/${icon}@2x.png`
+    : "img";
 
   function handleSearchCity(e) {
     e.preventDefault();
@@ -114,46 +148,123 @@ export default function CurrentCity() {
         </button>
       </form>
       {isFetching && (
-        <p className="text-center text-slate-900 text-2xl">The data is fetching...</p>
+        <p className="text-center text-slate-900 text-2xl">
+          The data is fetching...
+        </p>
       )}
       {!isFetching && (
         <div
           style={{ background: bg }}
           className="w-full md:w-3/4 my-4 p-3 flex items-center justify-around shadow-md shadow-slate-600 rounded-2xl gap-4"
         >
-          <div>
-            <h3 className="text-xl md:text-4xl text-slate-900 my-4 shadow-2xl p-1 md:p-3 rounded-2xl backdrop-blur-lg">
+          <motion.div>
+            <motion.h3
+              ref={ref}
+              initial={{ opacity: 0, y: 100 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 0.5 }}
+              className="text-xl md:text-4xl text-slate-900 my-4 shadow-2xl p-1 md:p-3 rounded-2xl backdrop-blur-lg"
+            >
               <PlaceIcon /> City: {city}
-            </h3>
-            <p className={basicStyle}>
+            </motion.h3>
+            <motion.p
+              ref={ref1}
+              initial={{ opacity: 0, y: 100 }}
+              animate={inView1 ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 0.5 }}
+              className={basicStyle}
+            >
               <TodayIcon /> Date: {day}, {monthDay} {currentMonths}
-            </p>
-            <p className={basicStyle}>
+            </motion.p>
+            <motion.p
+              ref={ref2}
+              initial={{ opacity: 0, y: 100 }}
+              animate={inView2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 0.5 }}
+              className={basicStyle}
+            >
               <AccessTimeIcon />
               {formattedHours}:{formattedMinutes}
-            </p>
-            <p className={basicStyle}>
+            </motion.p>
+
+            <motion.p
+              className={basicStyle}
+              ref={ref3}
+              initial={{ opacity: 0, y: 100 }}
+              animate={inView3 ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 0.5 }}
+            >
               <ThermostatIcon />
               {celsiusTemperature}&deg; C
-            </p>
-            <p className={basicStyle}>Max temp: {celsiusMaxTemp}&deg; </p>
-            <p className={basicStyle}>Min temp: {celsiusMinTemp}&deg;</p>
-          </div>
+            </motion.p>
+
+            <motion.p
+              ref={ref4}
+              initial={{ opacity: 0, y: 100 }}
+              animate={inView4 ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 0.5 }}
+              className={basicStyle}
+            >
+              Max temp: {celsiusMaxTemp}&deg;{" "}
+            </motion.p>
+            <motion.p
+              ref={ref5}
+              initial={{ opacity: 0, y: 100 }}
+              animate={inView5 ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 0.5 }}
+              className={basicStyle}
+            >
+              Min temp: {celsiusMinTemp}&deg;
+            </motion.p>
+          </motion.div>
           <div>
-            <p className={basicStyle}>Real feel:{realFeel}&deg; C</p>
-            <p className={basicStyle}>
+            <motion.p
+              ref={ref}
+              initial={{ opacity: 0, y: 100 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 0.5 }}
+              className={basicStyle}
+            >
+              Real feel:{realFeel}&deg; C
+            </motion.p>
+            <motion.p
+              ref={ref1}
+              initial={{ opacity: 0, y: 100 }}
+              animate={inView1 ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 0.5 }}
+              className={basicStyle}
+            >
               <DescriptionIcon />
               Description: {description}
-            </p>
-            <img src={iconUrl} alt="" />
-            <p className={basicStyle}>
+            </motion.p>
+            <motion.img
+              src={iconUrl}
+              alt="img"
+              ref={ref2}
+              initial={{ opacity: 0, y: 100 }}
+              animate={inView2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 0.5 }}
+            />
+            <motion.p
+              ref={ref3}
+              initial={{ opacity: 0, y: 100 }}
+              animate={inView3 ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 0.5 }}
+              className={basicStyle}
+            >
               <AirIcon />
               Wind: {windSpeed}km/h
-            </p>
-            <p className={basicStyle}>
+            </motion.p>
+            <motion.p
+              ref={ref4}
+              initial={{ opacity: 0, y: 100 }}
+              animate={inView4 ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 0.5 }}
+              className={basicStyle}
+            >
               <WaterDropIcon />
               Humidity: {humidity}
-            </p>
+            </motion.p>
           </div>
         </div>
       )}

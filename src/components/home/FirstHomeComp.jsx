@@ -1,4 +1,3 @@
-import Card from "../UI/Card";
 import { Link } from "react-router-dom";
 import bgImg from "../../assets/carouselImg.jpg";
 import Button from "../UI/Button";
@@ -7,13 +6,21 @@ import ThunderstormIcon from "@mui/icons-material/Thunderstorm";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import { useTheme } from "../store/themeContext";
 import WeatherCard from "../UI/WeatherCard";
+import { motion, useScroll, useTransform } from "framer-motion";
+
 export default function FirstHomeComp() {
   const { isDark } = useTheme();
   const cardStyle = "max-w-60 rounded-2xl shadow-md shadow-slate-700";
 
+  const { scrollY } = useScroll();
+  const opacityTitle = useTransform(scrollY, [0, 200, 300], [0, 0.5, 1]);
+  const opacitySubtitle = useTransform(scrollY, [0, 300, 750], [0, 0.5, 1]);
+  const divOpacity = useTransform(scrollY, [0, 500, 800], [0, 0.5, 1]);
+  const textScale = useTransform(scrollY, [0, 200], [0.5, 1]);
   return (
     <div className="flex align-center justify-center flex-col my-5 md:my-20 relative">
-      <h2
+      <motion.h2
+        style={{ opacity: opacityTitle, scale: textScale }}
         className={`text-2xl sm:text-3xl lg:text-5xl font-semibold mx-auto my-3 ${
           isDark ? "text-slate-950" : "text-slate-100"
         }`}
@@ -23,14 +30,15 @@ export default function FirstHomeComp() {
           unpredictable
           <ThunderstormIcon style={{ fontSize: "35px" }} className="mx-2" />
         </span>
-      </h2>
-      <p
+      </motion.h2>
+      <motion.p
+        style={{ opacity: opacitySubtitle }}
         className={`sm:text-xl lg:text-2xl mx-auto mb-3 ${
           isDark ? "text-slate-950" : "text-slate-100"
         }`}
       >
         Be one step ahead of it!
-      </p>
+      </motion.p>
       <Link to="/about" className="mx-auto">
         <Button
           className={`bg-slate-400 w-44 mb-5 ${
@@ -40,7 +48,10 @@ export default function FirstHomeComp() {
           Explore benefits <ArrowForwardIcon />
         </Button>
       </Link>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center sm:my-6 md:my-16">
+      <motion.div
+        style={{ opacity: divOpacity }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center sm:my-6 md:my-16"
+      >
         <WeatherCard
           className={`${cardStyle} bg-slate-300`}
           title="Accurate Weather Forecasts"
@@ -62,7 +73,7 @@ export default function FirstHomeComp() {
             See weather forecast <ArrowForwardIcon />
           </Button>
         </WeatherCard>
-      </div>
+      </motion.div>
     </div>
   );
 }
